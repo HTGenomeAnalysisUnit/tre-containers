@@ -188,4 +188,12 @@ singularity run \
     /path/to/your_TRE_rstudio_container.sif
 ```
 
-**NB.** The `-B /run/dbus/system_bus_socket` is required to allow R studio to communicate with the system dbus. This is necessary for some R packages to work correctly. Do not remove this option, and add other directories you need to mount by adding more `-B` options.
+**Important notes** 
+- The `-B /run/dbus/system_bus_socket` is required to allow R studio to communicate with the system dbus. This is necessary for some R packages to work correctly. Do not remove this option, and add other directories you need to mount by adding more `-B` options.
+- You can't install additional packages in the R studio interface. You need to build a new container with the packages you need.
+
+When you are in the R studio interface, please remove the local source of packages from your home to avoid conflicts with the system packages. You can do this by running the following command in the R console:
+
+```R
+.libPaths(.libPaths()[!grepl("/home/", .libPaths())])
+```
