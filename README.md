@@ -117,7 +117,7 @@ If you need to install packages from **Bioconductor**, you can add the `bioc+` p
 bioc+DESeq2
 ```
 
-If you need to install packages from **GitHub**, you can add the `git+` prefix to the package name in the requirements.txt file. Version definition works as usual. For example, to install the `ggplot2` package from GitHub, you should add the following line to the requirements.txt file:
+If you need to install packages from **GitHub**, you can add the `git+` prefix to the package name in the requirements.txt file. Version definition works as usual. For example, to install the `DIALOGUE` package from GitHub, you should add the following line to the requirements.txt file:
 
 ```
 git+https://github.com/livnatje/DIALOGUE
