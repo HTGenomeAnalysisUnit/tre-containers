@@ -1,0 +1,10 @@
+my_CRAN_package
+git+gitrepo_package
+bioc+bioconductor_package
+fda
+ggsci
+gridExtra
+lubridate
+readxl
+tidytext
+tidyverse
