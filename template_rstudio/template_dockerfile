@@ -1,4 +1,4 @@
-FROM htgenomeanalysisunit/rstudio-desktop:2024.09.0
+FROM ghtrecontainers/rstudio-desktop:2024.09.0
 
 ARG DEBIAN_FRONTEND=noninteractive
 
