@@ -1,0 +1,96 @@
+name: Build docker container
+
+on:
+  workflow_call:
+    inputs:
+      dockerfile-matrix:
+        description: "path to the Dockerfile to build"
+        required: false
+        type: string
+      push-branch:
+        description: "branch to push the container to"
+        required: false
+        type: string
+        default: 'refs/heads/main'
+      dockerhub_target:
+        description: "DockerHub organization or user to push to"
+        required: true
+        type: string
+    secrets:
+      username:
+        description: "DockerHub username"
+        required: true
+      token:
+        description: "DockerHub token"
+        required: true
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.1.1
+      - name: List all changed files
+        run: echo '${{ inputs.dockerfile-matrix }}'
+  
+  build-docker:
+    name: Build and push Docker container
+    runs-on: ubuntu-latest
+    if: ${{ inputs.dockerfile-matrix != '[]' }}
+    strategy:
+      matrix: 
+        files: ${{ fromJSON(inputs.dockerfile-matrix) }}
+      fail-fast: false
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.1.1
+      
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v3.1.0
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v3.0.0
+        with:
+          username: ${{ secrets.username }}
+          password: ${{ secrets.token }}
+
+      - name: Parse docker params
+        id: parse-dockerfile
+        env:
+          DOCKERFILE: ${{ matrix.files }}
+        run: |
+          filename=${{ env.DOCKERFILE }}
+          recipe_path=${filename%/*}
+          version=${recipe_path##*/}
+          tool_path=${recipe_path%/*}
+          tool_name=${tool_path##*/}
+          tag="${{ inputs.dockerhub_target }}/$tool_name:$version"
+          filename="./$filename"
+          context="./$recipe_path"
+          echo "$context - $filename - $tag"
+          echo "dockerfile=$filename" >> $GITHUB_OUTPUT
+          echo "tag=$tag" >> $GITHUB_OUTPUT
+          echo "context=$context" >> $GITHUB_OUTPUT
+      
+      # - name: Login to Github Packages
+      #   uses: docker/login-action@v1
+      #   with:
+      #     registry: ghcr.io
+      #     username: ${{ github.actor }}
+      #     password: ${{ secrets.GHCR_PAT }}
+
+      - name: Build and push
+        id: docker-build
+        uses: docker/build-push-action@v5.1.0
+        with:
+          context: ${{ steps.parse-dockerfile.outputs.context }}
+        # relative path to the place where source code with Dockerfile is located
+          file: ${{ steps.parse-dockerfile.outputs.dockerfile }}
+        # Note: tags has to be all lower-case
+          tags: ${{ steps.parse-dockerfile.outputs.tag }}
+        # push only on selected branch
+          push: ${{ github.ref == inputs.push-branch }}
+
+      - name: Image digest
+        run: echo ${{ steps.docker-build.outputs.digest }}

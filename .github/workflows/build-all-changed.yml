@@ -1,0 +1,44 @@
+name: Build all changed recipes
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  get-updated-dockerfile:
+    runs-on: ubuntu-latest
+    name: List all updated dockerfiles
+    #only execute if commit message do not contains nobuild
+    if: "!contains(github.event.head_commit.message, 'nobuild') && !contains(github.event.head_commit.message, 'targetbuild')"
+    outputs:
+      files-matrix: ${{ steps.changed-docker-files.outputs.all_changed_files }}
+    steps:
+      - uses: actions/checkout@v4.1.1
+        with:
+          fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
+
+      - name: Get changed dockerfiles
+        id: changed-docker-files
+        uses: tj-actions/changed-files@v42.0.5
+        with:
+          files: |
+            **/Dockerfile
+          json: true
+          escape_json: false  
+
+      - name: List all changed files
+        run: |
+          echo 'N changed files ${{ steps.changed-docker-files.outputs.all_changed_files_count }}'
+          echo 'JSON of files ${{ steps.changed-docker-files.outputs.all_changed_files }}'
+
+  build-docker-container:
+    uses: ./.github/workflows/build-docker.yml
+    needs: get-updated-dockerfile # Depends on previous job
+    with:
+      dockerfile-matrix: ${{ needs.get-updated-dockerfile.outputs.files-matrix }}
+      push-branch: 'refs/heads/main'
+      dockerhub_target: ${{ vars.DOCKERHUB_ORG }}
+    secrets:
+      username: ${{ secrets.DOCKERHUB_USERNAME }}
+      token: ${{ secrets.DOCKERHUB_TOKEN }}
+        

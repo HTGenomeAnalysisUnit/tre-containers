@@ -1,0 +1,43 @@
+name: Target build
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:    
+  get-dockerfile:
+    runs-on: ubuntu-latest
+    name: Get target dockerfile
+    #only execute if commit message do not contains nobuild
+    if: "contains(github.event.head_commit.message, 'targetbuild')"
+    outputs:
+      files-matrix: ${{ steps.get-docker-file.outputs.dockerfile }}
+    steps:
+      - uses: actions/checkout@v4.1.1
+        with:
+          fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
+
+      - name: Make json of the specified file
+        id: get-docker-file
+        run: |
+          dockerfile_dir=$(echo "${{ github.event.head_commit.message }}" | grep -oP '(?<=targetbuild )\b[^\s]+\b')
+          dockerfile_path="./$dockerfile_dir/Dockerfile"
+          json_file="[ \"$dockerfile_path\" ]"
+          echo "dockerfile=$json_file" >> $GITHUB_OUTPUT
+
+      - name: List parsed file
+        run: |
+          echo 'JSON of files ${{ steps.get-docker-file.outputs.dockerfile }}'
+
+  build-docker-container:
+    name: Build docker and push
+    uses: ./.github/workflows/build-docker.yml
+    needs: get-dockerfile # Depends on previous job
+    with:
+      dockerfile-matrix: ${{ needs.get-dockerfile.outputs.files-matrix }}
+      dockerhub_target: ${{ vars.DOCKERHUB_ORG }}
+      push-branch: 'refs/heads/main'
+    secrets:
+      username: ${{ secrets.DOCKERHUB_USERNAME }}
+      token: ${{ secrets.DOCKERHUB_TOKEN }}
+        
