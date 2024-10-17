@@ -109,7 +109,7 @@ Please refer to `template_rstudio` folder.
 
 - Copy the files in this folder to your container folder.
 - Update Author and Contact LABELS in the template_dockerfile file.
-- Update the `requirements.txt` file with the R packages you need to install. Packages should be listed one per line, with the version number if needed using standard version syntax (e.g. `dplyr==1.0.0`, `dplyr>=1.0.0`). If no version is specified, the latest version will be installed.
+- Create a new `requirements.txt` file with the R packages you need to install (the one present in the template folder contains some dummy examples, don't include them in your final requrements file). Packages should be listed one per line, with the version number if needed using standard version syntax (e.g. `dplyr==1.0.0`, `dplyr>=1.0.0`). If no version is specified, the latest version will be installed.
 
 If you need to install packages from **Bioconductor**, you can add the `bioc+` prefix to the package name in the requirements.txt file. Version definition works as usual. For example, to install the `DESeq2` package from Bioconductor, you should add the following line to the requirements.txt file:
 
