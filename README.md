@@ -4,6 +4,18 @@ This repository hosts container recipes for analyses in the G&H TRE system.
 
 The repository automatically builds any Dockerfile pushed to the main branch and publish them in DockerHub.
 
+- [TRE containers repository](#tre-containers-repository)
+  - [The base containers](#the-base-containers)
+    - [R studio](#r-studio)
+    - [Python](#python)
+  - [How to create a new container](#how-to-create-a-new-container)
+  - [Templates](#templates)
+    - [For R studio](#for-r-studio)
+    - [For Python](#for-python)
+  - [Use R and Python from your container](#use-r-and-python-from-your-container)
+    - [Python](#python-1)
+    - [R](#r)
+
 ## The base containers
 
 There are 2 base containers for R studio and Python that are used as a base for all other containers. These containers are built from the `rstudio-desktop` and `python-base` folders in the repository.
@@ -137,3 +149,43 @@ Please refer to `template_python` folder.
 - Update Author and Contact LABELS in the template_dockerfile file.
 - Update the `environment.yml` to generate the environment you need. This follows the standard syntax for conda environment definition file. You can use the `conda` or `pip` sections to install packages. **NB.** Do not chance the name of the environment file.
 - In most cases, it is suggested to add your packages to the environment.yml file from the template. This file includes support for jupyter-lab and some useful jupyter-lab extensions. 
+
+## Use R and Python from your container
+
+General notes:
+
+- Add `--nv` option after `run` if you need to use GPU.
+- Add any relevant path to the `-B` option to mount directories from the host to the container. You read/write only in the mounted directories.
+
+### Python
+
+When you are in the TRE
+
+1. Navigate to a working directory where you have writing permissions
+2. Launch jupyter-lab from the container. This will automatically open a browser window with the jupyter-lab interface.
+
+```bash
+singularity run --cleanenv \
+    -B /my/data/folder -B /another/data/folder \
+    /path/to/your_TRE_python_container.sif \
+    jupyter-lab --port 9973 --ip 0.0.0.0 \
+    --notebook-dir /your/TRE/notebook/path
+```
+
+- Use `--notebook-dir` to specify the directory where you want to start jupyter-lab. This should be a directory where you have writing permissions and where you want to create notebooks.
+- Pick a random port number for `--port` to avoid conflicts with other users. Generally, any number between 9000 and 9999 should be fine.
+
+### R
+
+When you are in the TRE
+
+1. Navigate to a working directory where you have writing permissions
+2. Launch R studio from the container. This will automatically open a browser window with the R studio interface.
+
+```bash
+singularity run \
+    -B /run/dbus/system_bus_socket -B /my/data/folder \
+    /path/to/your_TRE_rstudio_container.sif
+```
+
+**NB.** The `-B /run/dbus/system_bus_socket` is required to allow R studio to communicate with the system dbus. This is necessary for some R packages to work correctly. Do not remove this option, and add other directories you need to mount by adding more `-B` options.
