@@ -74,6 +74,8 @@ There are 2 base containers for R studio and Python that are used as a base for 
 
 If a package you need is not included in the base container or in other containers already available, you can create a new container with the packages you need. **Please be considerate when creating a new container. Try to reuse existing containers when possible and minimize the number of new containers built.**
 
+For each defined container, the last recipe you push is tagged as `latest` in DockerHub and will be automatically imported in the TRE. Therefore, **it is important to manage your versions correctly and to avoid creating 2 versions of the same container in the same merge request.**
+
 To create a new container, follow the steps below:
 
 1. Clone this repository to your local machine
