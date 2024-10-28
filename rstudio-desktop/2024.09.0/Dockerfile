@@ -6,6 +6,7 @@ ARG RSTUDIO_VERSION=2024.09.0-375-amd64
 LABEL Author="Edoardo Giacopuzzi"
 LABEL Contact="edoardo.giacopuzzi@fht.org"
 LABEL Description="RStudio Desktop with basic R packages"
+LABEL version="2024.09.0"
 
 ENV PATH=/usr/lib/rstudio-server/bin:${PATH}
 ENV LC_ALL=en_GB.UTF-8
