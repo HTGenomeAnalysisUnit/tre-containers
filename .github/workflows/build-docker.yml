@@ -66,11 +66,12 @@ jobs:
           tool_path=${recipe_path%/*}
           tool_name=${tool_path##*/}
           tag="${{ inputs.dockerhub_target }}/$tool_name:$version"
+          latest_tag="${{ inputs.dockerhub_target }}/$tool_name:latest"
           filename="./$filename"
           context="./$recipe_path"
           echo "$context - $filename - $tag"
           echo "dockerfile=$filename" >> $GITHUB_OUTPUT
-          echo "tag=$tag" >> $GITHUB_OUTPUT
+          echo "tag=$tag,$latest_tag" >> $GITHUB_OUTPUT
           echo "context=$context" >> $GITHUB_OUTPUT
       
       # - name: Login to Github Packages
