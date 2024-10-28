@@ -2,6 +2,7 @@ FROM mambaorg/micromamba:2.0.2
 
 LABEL description="Basic Python environment for TRE"
 LABEL author="Edoardo Giacopuzzi"
+LABEL version="0.2.0"
 
 ARG DEBIAN_FRONTEND=noninteractive
 ARG VERSION="20241011"

@@ -4,6 +4,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 LABEL Author="Daniela Zanotti"
 LABEL Contact="daniela.zanotti@fht.org"
+LABEL Versuion="1.0"
 
 # Install R packages
 # Copy the install.R and requirements.txt files to the container
