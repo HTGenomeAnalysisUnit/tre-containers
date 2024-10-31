@@ -39,8 +39,6 @@ RUN wget https://github.com/harfbuzz/harfbuzz/releases/download/10.0.1/harfbuzz-
 	tar -xvf harfbuzz-10.0.1.tar.xz && \
 	rm harfbuzz-10.0.1.tar.xz && \
 	cd harfbuzz-10.0.1 && \
-	./configure && \
-	make && \
 	mkdir build && \
 	cd build && \
 	cmake .. && \
