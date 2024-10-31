@@ -1,6 +1,6 @@
 Matrix==1.6-5
+systemfonts
 data.table
-devtools
 dplyr
 gghighlight
 ggiraph

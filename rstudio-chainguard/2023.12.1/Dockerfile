@@ -11,7 +11,9 @@ USER root
 RUN apk add \
 	cmake \
 	fontconfig-dev \
-	gmp
+	gmp \
+	pkgconf \
+	zlib
 
 # Install Nlopt
 WORKDIR /opt
