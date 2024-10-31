@@ -1,9 +1,27 @@
-FROM cgr.dev/chainguard/rstudio
+FROM cgr.dev/chainguard/rstudio:latest-dev
 
 LABEL Author="Edoardo Giacopuzzi"
 LABEL Contact="edoardo.giacopuzzi@fht.org"
 LABEL Description="RStudio Server with basic R packages"
 LABEL version="2023.12.1"
+
+# Install popular system dependencies
+RUN apk add \
+	cmake \
+	fontconfig-dev \
+	gmp
+
+# Install Nlopt
+WORKDIR /opt
+RUN wget https://github.com/stevengj/nlopt/archive/v2.7.1.tar.gz && \
+	tar -xvf v2.7.1.tar.gz && \
+	rm v2.7.1.tar.gz && \
+	cd nlopt-2.7.1 && \
+	mkdir build && \
+	cd build && \
+	cmake .. && \
+	make && \
+	make install
 
 # Install remotes to manage R packages
 RUN R -e "install.packages(c('remotes','BiocManager'), repos='http://cran.rstudio.com/')"

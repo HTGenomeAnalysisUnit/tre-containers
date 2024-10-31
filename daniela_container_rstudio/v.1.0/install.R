@@ -43,5 +43,8 @@ for (pkg in pkgs) {
 	if (source == "bioc") {
 		remotes::install_version(pkg_name$pkg_name, version=pkg_name$version, upgrade="never", repos=c("https://bioconductor.org/packages/3.19/bioc"))
 	}
-
+	
+	if ( ! library(pkg_name$pkg_name, character.only=TRUE, logical.return=TRUE) ) {
+        quit(status=1, save='no')
+    }
 }

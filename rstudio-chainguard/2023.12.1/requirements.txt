@@ -1,4 +1,4 @@
-broom
+Matrix==1.6-5
 data.table
 devtools
 dplyr
@@ -13,7 +13,6 @@ ggstatsplot
 ggupset
 hexbin
 MASS
-Matrix
 patchwork
 plotly
 scales
