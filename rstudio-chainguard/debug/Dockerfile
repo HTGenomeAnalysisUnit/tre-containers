@@ -50,9 +50,6 @@ RUN wget https://github.com/harfbuzz/harfbuzz/releases/download/10.0.1/harfbuzz-
 ENV PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 ENV LD_LIBRARY_PATH=/usr/local/include/harfbuzz/
 
-RUN pkg-config --help
-RUN echo $PKG_CONFIG_PATH
-
 USER rstudio-server
 
 # Install remote/BiocManager to manage R packages
