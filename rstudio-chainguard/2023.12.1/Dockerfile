@@ -27,7 +27,7 @@ RUN wget https://github.com/stevengj/nlopt/archive/v2.7.1.tar.gz && \
 
 USER rstudio-server
 
-# Install remotes to manage R packages
+# Install remote/BiocManager to manage R packages
 RUN R -e "install.packages(c('remotes','BiocManager'), repos='http://cran.rstudio.com/')"
 
 # Install R packages

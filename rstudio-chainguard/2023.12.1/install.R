@@ -4,11 +4,16 @@ split_string <- function(input_string) {
   # Split the string based on the version symbols
   parts <- strsplit(input_string, "==|<=|>=|<|>")[[1]]
   
+  # If there is only one part, then the version is not specified
+  if (length(parts) == 1) {
+	return(list(pkg_name = parts[1], version = "NA"))
+  }
+
   # Find the symbol used in the input string
   symbol <- regmatches(input_string, regexpr("==|<=|>=|<|>", input_string))
   
   # Return the parts and the symbol
-  list(pkg_name = parts[1], version = paste(symbol, parts[2], sep = " "))
+  return(list(pkg_name = parts[1], version = paste(symbol, parts[2], sep = " ")))
 }
 
 
