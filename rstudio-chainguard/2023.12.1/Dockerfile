@@ -41,11 +41,17 @@ RUN wget https://github.com/harfbuzz/harfbuzz/releases/download/10.0.1/harfbuzz-
 	cd harfbuzz-10.0.1 && \
 	mkdir build && \
 	cd build && \
-	cmake .. && \
+	cmake -Dfreetype -Dcairo .. && \
 	make && \
 	make install && \
 	cd /opt && \
 	rm -rf harfbuzz-10.0.1
+
+ENV PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
+ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/include/harfbuzz/
+
+RUN pkg-config --help
+RUN echo $PKG_CONFIG_PATH
 
 USER rstudio-server
 
