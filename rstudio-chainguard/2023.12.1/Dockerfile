@@ -13,7 +13,11 @@ RUN apk add \
 	fontconfig-dev \
 	gmp \
 	pkgconf \
-	zlib
+	zlib \
+	fribidi-dev \
+	cairo-dev \
+	freetype-dev \
+	glib-dev
 
 # Install Nlopt
 WORKDIR /opt
@@ -25,7 +29,25 @@ RUN wget https://github.com/stevengj/nlopt/archive/v2.7.1.tar.gz && \
 	cd build && \
 	cmake .. && \
 	make && \
-	make install
+	make install && \
+	cd /opt && \
+	rm -rf nlopt-2.7.1
+
+# Install harfbuzz
+WORKDIR /opt
+RUN wget https://github.com/harfbuzz/harfbuzz/releases/download/10.0.1/harfbuzz-10.0.1.tar.xz && \
+	tar -xvf harfbuzz-10.0.1.tar.xz && \
+	rm harfbuzz-10.0.1.tar.xz && \
+	cd harfbuzz-10.0.1 && \
+	./configure && \
+	make && \
+	mkdir build && \
+	cd build && \
+	cmake .. && \
+	make && \
+	make install && \
+	cd /opt && \
+	rm -rf harfbuzz-10.0.1
 
 USER rstudio-server
 
