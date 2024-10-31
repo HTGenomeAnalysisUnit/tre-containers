@@ -34,7 +34,7 @@ jobs:
         run: echo '${{ inputs.dockerfile-matrix }}'
   
   build-docker:
-    name: Build and push Docker container
+    name: Build check and push Docker container
     runs-on: ubuntu-latest
     if: ${{ inputs.dockerfile-matrix != '[]' }}
     strategy:
@@ -72,6 +72,7 @@ jobs:
           echo "$context - $filename - $tag"
           echo "dockerfile=$filename" >> $GITHUB_OUTPUT
           echo "tag=$tag,$latest_tag" >> $GITHUB_OUTPUT
+          echo "check_tag=$latest_tag" >> $GITHUB_OUTPUT
           echo "context=$context" >> $GITHUB_OUTPUT
       
       # - name: Login to Github Packages
@@ -81,17 +82,46 @@ jobs:
       #     username: ${{ github.actor }}
       #     password: ${{ secrets.GHCR_PAT }}
 
+      # - name: Build and push
+      #   id: docker-build
+      #   uses: docker/build-push-action@v5.1.0
+      #   with:
+      #     context: ${{ steps.parse-dockerfile.outputs.context }}
+      #   # relative path to the place where source code with Dockerfile is located
+      #     file: ${{ steps.parse-dockerfile.outputs.dockerfile }}
+      #   # Note: tags has to be all lower-case
+      #     tags: ${{ steps.parse-dockerfile.outputs.tag }}
+      #   # push only on selected branch
+      #     push: ${{ github.ref == inputs.push-branch }}
+      
       - name: Build and push
         id: docker-build
-        uses: docker/build-push-action@v5.1.0
+        uses: docker/build-push-action@v6.9.0
         with:
+          # relative path to the place where source code with Dockerfile is located
           context: ${{ steps.parse-dockerfile.outputs.context }}
-        # relative path to the place where source code with Dockerfile is located
+          # location of dockerfile
           file: ${{ steps.parse-dockerfile.outputs.dockerfile }}
-        # Note: tags has to be all lower-case
+          # Note: tags has to be all lower-case
           tags: ${{ steps.parse-dockerfile.outputs.tag }}
-        # push only on selected branch
-          push: ${{ github.ref == inputs.push-branch }}
+          # make image available to other jobs
+          load: true
+          push: false
 
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          image-ref: '${{ steps.parse-dockerfile.outputs.check_tag }}'
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: false
+          vuln-type: 'os,library'
+          severity: 'CRITICAL'
+      
+      - name: Push to dockerhub
+        run: docker push ${{ steps.parse-dockerfile.outputs.tag }}
+        env:
+          DOCKER_CLI_EXPERIMENTAL: enabled
+        
       - name: Image digest
         run: echo ${{ steps.docker-build.outputs.digest }}

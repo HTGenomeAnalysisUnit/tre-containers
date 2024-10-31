@@ -1,4 +1,4 @@
-FROM ghtrecontainers/rstudio-desktop:2024.09.0
+FROM ghtrecontainers/rstudio-chainguard:latest
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -14,4 +14,4 @@ COPY install.R /opt
 COPY requirements.txt /opt
 RUN Rscript /opt/install.R
 
-ENTRYPOINT ["rstudio"]
+ENTRYPOINT ["rserver"]
