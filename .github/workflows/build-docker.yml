@@ -119,7 +119,9 @@ jobs:
           severity: 'CRITICAL'
       
       - name: Push to dockerhub
-        run: docker push $(echo "${{ steps.parse-dockerfile.outputs.tag }}" | tr ',' ' ')
+        run: |
+          docker push $(echo "${{ steps.parse-dockerfile.outputs.tag }}" | cut -d',' -f1)
+          docker push $(echo "${{ steps.parse-dockerfile.outputs.tag }}" | cut -d',' -f2)
         env:
           DOCKER_CLI_EXPERIMENTAL: enabled
         

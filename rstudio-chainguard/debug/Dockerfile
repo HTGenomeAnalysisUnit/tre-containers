@@ -3,7 +3,7 @@ FROM cgr.dev/chainguard/rstudio:latest-dev
 LABEL Author="Edoardo Giacopuzzi"
 LABEL Contact="edoardo.giacopuzzi@fht.org"
 LABEL Description="RStudio Server with basic R packages"
-LABEL version="2023.12.1"
+LABEL version="debug"
 
 USER root
 
