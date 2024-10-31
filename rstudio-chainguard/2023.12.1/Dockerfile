@@ -5,6 +5,8 @@ LABEL Contact="edoardo.giacopuzzi@fht.org"
 LABEL Description="RStudio Server with basic R packages"
 LABEL version="2023.12.1"
 
+USER root
+
 # Install popular system dependencies
 RUN apk add \
 	cmake \
@@ -23,6 +25,7 @@ RUN wget https://github.com/stevengj/nlopt/archive/v2.7.1.tar.gz && \
 	make && \
 	make install
 
+USER rstudio-server
 # Install remotes to manage R packages
 RUN R -e "install.packages(c('remotes','BiocManager'), repos='http://cran.rstudio.com/')"
 
