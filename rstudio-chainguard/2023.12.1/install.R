@@ -8,7 +8,7 @@ split_string <- function(input_string) {
   symbol <- regmatches(input_string, regexpr("==|<=|>=|<|>", input_string))
   
   # Return the parts and the symbol
-  list(pkg_name = parts[1], version = paste(symbol, parts[2], sep = ""))
+  list(pkg_name = parts[1], version = paste(symbol, parts[2], sep = " "))
 }
 
 
