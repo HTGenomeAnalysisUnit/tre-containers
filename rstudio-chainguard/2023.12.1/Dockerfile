@@ -41,7 +41,7 @@ RUN wget https://github.com/harfbuzz/harfbuzz/releases/download/10.0.1/harfbuzz-
 	cd harfbuzz-10.0.1 && \
 	mkdir build && \
 	cd build && \
-	cmake -Dfreetype -Dcairo .. && \
+	cmake -Dfreetype=enabled -Dcairo=enabled .. && \
 	make && \
 	make install && \
 	cd /opt && \
