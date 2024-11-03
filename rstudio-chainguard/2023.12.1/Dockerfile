@@ -17,7 +17,15 @@ RUN apk add \
 	fribidi-dev \
 	cairo-dev \
 	freetype-dev \
-	glib-dev
+	glib-dev \
+	autoconf \
+	automake
+
+# Set environment variables for compiling
+ENV PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/local/lib/pkgconfig
+ENV LD_LIBRARY_PATH=/usr/lib:/usr/local/lib
+ENV C_INCLUDE_PATH=/usr/include:/usr/local/include
+ENV CPATH=/usr/include:/usr/local/include
 
 # Install Nlopt
 WORKDIR /opt
@@ -33,6 +41,18 @@ RUN wget https://github.com/stevengj/nlopt/archive/v2.7.1.tar.gz && \
 	cd /opt && \
 	rm -rf nlopt-2.7.1
 
+# Install libtools
+WORKDIR /opt
+RUN wget https://ftp.wayne.edu/gnu/libtool/libtool-2.5.3.tar.gz && \
+	tar -zxvf libtool-2.5.3.tar.gz && \
+	rm libtool-2.5.3.tar.gz && \
+	cd libtool-2.5.3 && \
+	./configure && \
+	make && \
+	make install && \
+	cd /opt && \
+	rm -rf libtool-2.5.3
+
 # Install harfbuzz
 WORKDIR /opt
 RUN wget https://github.com/harfbuzz/harfbuzz/releases/download/10.0.1/harfbuzz-10.0.1.tar.xz && \
@@ -46,12 +66,6 @@ RUN wget https://github.com/harfbuzz/harfbuzz/releases/download/10.0.1/harfbuzz-
 	make install && \
 	cd /opt && \
 	rm -rf harfbuzz-10.0.1
-
-ENV PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
-ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/include/harfbuzz/
-
-RUN pkg-config --help
-RUN echo $PKG_CONFIG_PATH
 
 USER rstudio-server
 
