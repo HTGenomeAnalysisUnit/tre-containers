@@ -1,7 +1,6 @@
 FROM ghtrecontainers/rstudio-chainguard:latest
 
-ARG DEBIAN_FRONTEND=noninteractive
-
+LABEL Description="Short env description"
 LABEL Author="Edoardo Giacopuzzi"
 LABEL Contact="edoardo.giacopuzzi@fht.org"
 # Match the version label to the container version tag

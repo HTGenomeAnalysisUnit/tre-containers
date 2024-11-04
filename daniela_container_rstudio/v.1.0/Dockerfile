@@ -1,7 +1,6 @@
 FROM ghtrecontainers/rstudio-chainguard:latest
 
-ARG DEBIAN_FRONTEND=noninteractive
-
+LABEL Description="Rstudio with tidyverse, gridExtra and other packages"
 LABEL Author="Daniela Zanotti"
 LABEL Contact="daniela.zanotti@fht.org"
 LABEL Version="1.0"
