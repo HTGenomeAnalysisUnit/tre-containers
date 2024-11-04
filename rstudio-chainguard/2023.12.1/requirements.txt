@@ -2,10 +2,10 @@ Matrix==1.6-5
 systemfonts
 data.table
 dplyr
+ggplot2
 gghighlight
 ggiraph
 geomtextpath
-ggplot2
 ggraph
 ggrepel
 ggridges
@@ -20,4 +20,3 @@ skimr
 stringr
 tidyr
 UpSetR
-bioc+ComplexHeatmap
