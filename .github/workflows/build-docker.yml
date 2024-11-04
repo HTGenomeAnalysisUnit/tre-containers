@@ -42,6 +42,9 @@ jobs:
         files: ${{ fromJSON(inputs.dockerfile-matrix) }}
       fail-fast: false
     steps:
+      - name: Delete unnecessary tools folder
+        run: rm -rf /opt/hostedtoolcache
+      
       - name: Checkout code
         uses: actions/checkout@v4.1.1
       
