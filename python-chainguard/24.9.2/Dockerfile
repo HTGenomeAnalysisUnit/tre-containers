@@ -12,7 +12,9 @@ RUN apk add \
 	glib-dev \
 	autoconf \
 	automake \
-    libstdc++
+    gcc \
+	git \
+	wget
 
 RUN mkdir /mamba_envs
 ENV MAMBA_ROOT_PREFIX=/mamba_envs
