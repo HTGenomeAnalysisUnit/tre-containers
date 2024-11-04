@@ -68,7 +68,7 @@ RUN wget https://github.com/harfbuzz/harfbuzz/releases/download/10.0.1/harfbuzz-
 
 # Install gmp library and mpfr
 WORKDIR /opt
-RUN wget https://gmplib.org/download/gmp/gmp-6.3.0.tar.xz && \
+RUN wget https://ftp.gnu.org/gnu/gmp/gmp-6.3.0.tar.xz && \
 	tar -xvf gmp-6.3.0.tar.xz && \
 	rm gmp-6.3.0.tar.xz && \
 	cd gmp-6.3.0 && \
