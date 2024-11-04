@@ -1,6 +1,6 @@
 FROM ghtrecontainers/python-chainguard:latest
 
-LABEL Description="Multimil Python environment"
+LABEL Description="Multimil MixMil Python environment"
 LABEL Author="Edoardo Giacopuzzi"
 LABEL Contact="edoardo.giacopuzzi@fht.org"
 LABEL version="multimil 0.2.0"
