@@ -61,11 +61,9 @@ RUN wget https://github.com/harfbuzz/harfbuzz/releases/download/10.0.1/harfbuzz-
 	cd harfbuzz-10.0.1 && \
 	mkdir build && \
 	cd build && \
-	cmake -Dfreetype=enabled -Dcairo=enabled .. && \
+	cmake -DHB_HAVE_FREETYPE=ON -DHB_HAVE_CAIRO=ON .. && \
 	make && \
-	make install && \
-	cd /opt && \
-	rm -rf harfbuzz-10.0.1
+	make install
 
 USER rstudio-server
 
