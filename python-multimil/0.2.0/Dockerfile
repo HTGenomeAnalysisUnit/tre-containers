@@ -1,7 +1,8 @@
 FROM ghtrecontainers/python-chainguard:latest
 
-LABEL description="Multimil Python environment"
-LABEL author="Edoardo Giacopuzzi"
+LABEL Description="Multimil Python environment"
+LABEL Author="Edoardo Giacopuzzi"
+LABEL Contact="edoardo.giacopuzzi@fht.org"
 LABEL version="0.2.0"
 
 COPY environment.yml /tmp/environment.yml
