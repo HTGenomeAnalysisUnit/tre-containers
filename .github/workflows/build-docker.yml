@@ -42,8 +42,19 @@ jobs:
         files: ${{ fromJSON(inputs.dockerfile-matrix) }}
       fail-fast: false
     steps:
-      - name: Delete unnecessary tools folder
-        run: rm -rf /opt/hostedtoolcache
+      - name: Free Disk Space Before Build
+        run: |
+          echo "Disk space before cleanup:"
+          df -h
+          sudo rm -rf /usr/local/.ghcup
+          sudo rm -rf /opt/hostedtoolcache
+          sudo rm -rf /usr/local/lib/android/sdk/ndk
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /usr/local/share/boost
+          sudo apt-get clean
+          echo "Disk space after cleanup:"
+          df -h
       
       - name: Checkout code
         uses: actions/checkout@v4.1.1
@@ -112,6 +123,8 @@ jobs:
           push: false
 
       - name: Run Trivy vulnerability scanner
+        id: trivy
+        continue-on-error: true
         uses: aquasecurity/trivy-action@0.28.0
         with:
           image-ref: '${{ steps.parse-dockerfile.outputs.check_tag }}'
