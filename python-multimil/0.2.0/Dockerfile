@@ -3,7 +3,7 @@ FROM ghtrecontainers/python-chainguard:latest
 LABEL Description="Multimil Python environment"
 LABEL Author="Edoardo Giacopuzzi"
 LABEL Contact="edoardo.giacopuzzi@fht.org"
-LABEL version="0.2.0"
+LABEL version="multimil 0.2.0"
 
 COPY environment.yml /tmp/environment.yml
 RUN micromamba install -y -n base -f /tmp/environment.yml && \
