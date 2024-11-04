@@ -10,8 +10,10 @@ RUN apk add \
 	cmake \
 	pkgconf \
 	glib-dev \
+	glibc-dev \
 	autoconf \
 	automake \
+	libstdc++ \
     gcc \
 	git \
 	wget
