@@ -95,7 +95,7 @@ RUN wget https://download.osgeo.org/libtiff/tiff-4.7.0.tar.xz && \
 	tar -xvf tiff-4.7.0.tar.xz && \
 	rm tiff-4.7.0.tar.xz && \
 	cd tiff-4.7.0 && \
-	cmake && \
+	./configure && \
 	make && \
 	make install && \
 	cd /opt && \
