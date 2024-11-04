@@ -89,6 +89,29 @@ RUN wget https://www.mpfr.org/mpfr-current/mpfr-4.2.1.tar.xz && \
 	cd /opt && \
 	rm -rf mpfr-4.2.1
 
+# Install libtiff and libjpeg required by many R packages
+WORKDIR /opt
+RUN wget https://download.osgeo.org/libtiff/tiff-4.7.0.tar.xz && \
+	tar -xvf tiff-4.7.0.tar.xz && \
+	rm tiff-4.7.0.tar.xz && \
+	cd tiff-4.7.0 && \
+	cmake && \
+	make && \
+	make install && \
+	cd /opt && \
+	rm -rf tiff-4.7.0
+
+WORKDIR /opt
+RUN wget https://www.ijg.org/files/jpegsrc.v9f.tar.gz && \
+	tar -zxvf jpegsrc.v9f.tar.gz && \
+	rm jpegsrc.v9f.tar.gz && \
+	cd jpeg-9f && \
+	./configure && \
+	make && \
+	make install && \
+	cd /opt && \
+	rm -rf jpeg-9f
+
 USER rstudio-server
 
 # Install remote/BiocManager to manage R packages
