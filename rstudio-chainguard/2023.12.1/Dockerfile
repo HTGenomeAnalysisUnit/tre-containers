@@ -59,6 +59,7 @@ RUN wget https://github.com/harfbuzz/harfbuzz/releases/download/10.0.1/harfbuzz-
 	tar -xvf harfbuzz-10.0.1.tar.xz && \
 	rm harfbuzz-10.0.1.tar.xz && \
 	cd harfbuzz-10.0.1 && \
+	sed -i 's/fno-exceptions/fno-exceptions -fPIC/' CMakeLists.txt && \
 	mkdir build && \
 	cd build && \
 	cmake -DHB_HAVE_FREETYPE=ON -DHB_HAVE_CAIRO=ON .. && \
