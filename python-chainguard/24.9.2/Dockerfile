@@ -1,11 +1,8 @@
-FROM cgr.dev/chainguard/conda
+FROM cgr.dev/chainguard/conda:latest-dev
 
 LABEL description="Standard Python environment for TRE"
 LABEL author="Edoardo Giacopuzzi"
 LABEL version="24.9.2"
-
-ARG DEBIAN_FRONTEND=noninteractive
-ARG VERSION="24.9.2"
 
 RUN mkdir /mamba_envs
 ENV MAMBA_ROOT_PREFIX=/mamba_envs
