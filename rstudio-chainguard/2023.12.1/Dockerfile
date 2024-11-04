@@ -19,7 +19,7 @@ RUN apk add \
 	freetype-dev \
 	glib-dev \
 	autoconf \
-	automake
+	automake 
 
 # Set environment variables for compiling
 ENV PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/local/lib/pkgconfig
@@ -65,6 +65,29 @@ RUN wget https://github.com/harfbuzz/harfbuzz/releases/download/10.0.1/harfbuzz-
 	cmake -DHB_HAVE_FREETYPE=ON -DHB_HAVE_CAIRO=ON .. && \
 	make && \
 	make install
+
+# Install gmp library and mpfr
+WORKDIR /opt
+RUN wget https://gmplib.org/download/gmp/gmp-6.3.0.tar.xz && \
+	tar -xvf gmp-6.3.0.tar.xz && \
+	rm gmp-6.3.0.tar.xz && \
+	cd gmp-6.3.0 && \
+	./configure && \
+	make && \
+	make install && \
+	cd /opt && \
+	rm -rf gmp-6.3.0
+
+WORKDIR /opt
+RUN wget https://www.mpfr.org/mpfr-current/mpfr-4.2.1.tar.xz && \
+	tar -xvf mpfr-4.2.1.tar.xz && \
+	rm mpfr-4.2.1.tar.xz && \
+	cd mpfr-4.2.1 && \
+	./configure && \
+	make && \
+	make install && \
+	cd /opt && \
+	rm -rf mpfr-4.2.1
 
 USER rstudio-server
 
