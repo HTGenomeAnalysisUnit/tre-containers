@@ -103,7 +103,7 @@ mkdir -p $config_dir
 
 # Create rserver.conf to set the user
 rserver_conf="$Rstudio_data_dir/rserver.conf"
-echo 'server-user="edoardo.giacopuzzi"' > $rserver_conf
+echo "server-user=\"$USER\"" > $rserver_conf
 
 # Start Rstudio server using the singularity image
 singularity run --cleanenv \
@@ -113,7 +113,7 @@ singularity run --cleanenv \
 	--bind ${share_dir}:${HOME}/.local/share/rstudio \
 	--bind ${cache_dir}:${HOME}/.cache/rstudio \
 	--bind ${varlib_dir}:/var/lib/,${varrun_dir}:/var/run,${tmp_dir}:/tmp \
-	--bind ${rserver_conf}:/etc/rstudio/rserver.conf
+	--bind ${rserver_conf}:/etc/rstudio/rserver.conf \
 	${mount_option} \
 	${sif_image} \
 	--auth-none=1 --server-user $USER --www-address=${IP_ADDRESS} --www-port=${PORT}
