@@ -154,11 +154,6 @@ Please refer to `template_python` folder.
 
 ## Use R and Python from your container
 
-General notes:
-
-- Add `--nv` option after `run` if you need to use GPU.
-- Add any relevant path to the `-B` option to mount directories from the host to the container. You read/write only in the mounted directories.
-
 ### Python
 
 When you are in the TRE
@@ -174,16 +169,35 @@ singularity run --cleanenv \
     --notebook-dir /your/TRE/notebook/path
 ```
 
+- Add `--nv` option after `run` if you need to use GPU.
+- Add any relevant path to the `-B` option to mount directories from the host to the container. You read/write only in the mounted directories.
 - Use `--notebook-dir` to specify the directory where you want to start jupyter-lab. This should be a directory where you have writing permissions and where you want to create notebooks.
 - Pick a random port number for `--port` to avoid conflicts with other users. Generally, any number between 9000 and 9999 should be fine.
 
 ### R
 
-When you are in the TRE
+R studio runs using R Studio Server and can be accessed through a web browser. There is a support script to launch R studio server in the TRE in this repository `start_rstudio.sh`.
 
-1. Navigate to a working directory where you have writing permissions
+First, copy paste the content of the script in a file in your home directory. Set execution permission for this script usign `chmod ug+x start_rstudio.sh`.
+Then, navigate to a working directory where you have writing permissions, and run the script with the following command:
 
-TODO: Update this section for the new rstudio server container
+```bash
+~/start_rstudio.sh \
+  -i /path/to/your_TRE_rstudio_container.sif \
+  -m /path/to/data1,/path/to/data2
+```
+
+To see all options available in the script, run:
+
+```bash
+~/start_rstudio.sh -h
+```
+
+Main options:
+
+- use `-m` to mount directories from the host to the container. You can mount multiple directories by separating them with commas.
+- by default R studio server files will be saved in `$HOME/Rstudio_data`. You can change this by setting the `-d` option.
+
 
 When you are in the R studio interface, please remove the local source of packages from your home to avoid conflicts with the system packages. You can do this by running the following command in the R console:
 
