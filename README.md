@@ -154,6 +154,10 @@ Please refer to `template_python` folder.
 
 ## Use R and Python from your container
 
+New containers are automatically imported in the TRE and made available in `/genesandhealth/red/containers`. 
+
+**NB.** The latest version of each container is imported and saved always with the same file name (`<container_name>_latest.sif`). If you need to keep multiple versions of the same container, you should copy the latest version to a new file in your space (like `<container_name>_<version>.sif`) before generating a new version.
+
 ### Python
 
 When you are in the TRE
