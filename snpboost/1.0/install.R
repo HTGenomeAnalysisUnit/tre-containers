@@ -28,8 +28,8 @@ for (pkg in pkgs) {
 	}
 
 	if (source == "git") {
-		message("Installing package ", pkg[1], " from ", source)
-		remotes::install_github(pkg[1])
+		message("Installing package ", pkg_name, " from ", source)
+		remotes::install_github(pkg_name)
 		next
 	}
 

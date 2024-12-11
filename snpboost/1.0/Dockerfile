@@ -4,7 +4,8 @@ LABEL Description="snpboost container for tWAS"
 LABEL Author="Edoardo Giacopuzzi"
 LABEL Contact="edoardo.giacopuzzi@fht.org"
 # Match the version label to the container version tag
-LABEL version="0.1" 
+LABEL version="1.0"
+LABEL help="snpboost.R is in /opt/snpboost" 
 
 # Install R packages
 # Copy the install.R and requirements.txt files to the container
