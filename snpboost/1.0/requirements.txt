@@ -1,0 +1,13 @@
+git+chrchang/plink-ng/2.0/pgenlibr")
+data.table
+tidyverse
+parallel
+bigsnpr
+ggplot2
+cowplot
+readr
+dataPreparation
+Rfast
+RcppArmadillo
+RcppGSL
+optparse
