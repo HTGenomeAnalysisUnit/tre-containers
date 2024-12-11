@@ -1,4 +1,4 @@
-git+chrchang/plink-ng/2.0/pgenlibr")
+git+chrchang/plink-ng/2.0/pgenlibr
 data.table
 tidyverse
 parallel
