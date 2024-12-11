@@ -8,7 +8,7 @@ LABEL version="1.0"
 LABEL help="snpboost.R is in /opt/snpboost" 
 
 USER root
-RUN apk add zlib-dev
+RUN apk add zlib-dev zstd-dev
 
 USER rstudio-server
 
