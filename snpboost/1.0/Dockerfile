@@ -7,6 +7,8 @@ LABEL Contact="edoardo.giacopuzzi@fht.org"
 LABEL version="1.0"
 LABEL help="snpboost.R is in /opt/snpboost" 
 
+RUN apk add zlib-dev
+
 # Install R packages
 # Copy the install.R and requirements.txt files to the container
 WORKDIR /opt
