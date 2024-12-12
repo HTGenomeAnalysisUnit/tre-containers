@@ -21,7 +21,7 @@ RUN wget https://s3.amazonaws.com/plink2-assets/alpha6/plink2_linux_avx2_2024120
 
 WORKDIR /opt
 COPY snpboost.tar.gz .
-RUN tar -xvzf snpboost.tar.gz
+RUN tar -xvzf snpboost.tar.gz && rm snpboost.tar.gz
 
 USER rstudio-server
 
