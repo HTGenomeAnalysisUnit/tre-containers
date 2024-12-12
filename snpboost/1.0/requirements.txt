@@ -7,6 +7,6 @@ cowplot
 readr
 dataPreparation
 Rfast
-RcppArmadillo
 RcppGSL
+RcppArmadillo
 optparse

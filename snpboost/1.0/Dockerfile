@@ -8,7 +8,18 @@ LABEL version="1.0"
 LABEL help="snpboost.R is in /opt/snpboost" 
 
 USER root
-RUN apk add zlib-dev zstd-dev
+RUN apk add zlib-dev zstd-dev glibc gsl-dev
+
+# WORKDIR /opt
+# RUN wget ftp://ftp.gnu.org/gnu/gsl/gsl-2.8.tar.gz && \
+# 	tar -xvzf gsl-2.8.tar.gz && \
+# 	rm gsl-2.8.tar.gz && \
+# 	cd gsl-2.8 && \
+# 	./configure && \
+# 	make && \
+# 	make install && \
+# 	cd /opt && \
+# 	rm -rf gsl-2.8
 
 USER rstudio-server
 
