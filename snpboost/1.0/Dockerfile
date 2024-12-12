@@ -11,6 +11,14 @@ LABEL help="snpboost.R is in /opt/snpboost"
 USER root
 RUN apk add zlib-dev zstd-dev glibc gsl-dev
 
+# Install plink2
+WORKDIR /opt
+RUN wget https://s3.amazonaws.com/plink2-assets/alpha6/plink2_linux_avx2_20241206.zip \
+    && unzip -q plink2_linux_avx2_20241206.zip \
+    && rm plink2_linux_avx2_20241206.zip \
+    && chmod a+x plink2 \
+    && mv plink2 /usr/bin/plink2
+
 WORKDIR /opt
 COPY snpboost.tar.gz .
 RUN tar -xvzf snpboost.tar.gz
