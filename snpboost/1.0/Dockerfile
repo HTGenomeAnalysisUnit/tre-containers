@@ -7,19 +7,13 @@ LABEL Contact="edoardo.giacopuzzi@fht.org"
 LABEL version="1.0"
 LABEL help="snpboost.R is in /opt/snpboost" 
 
+# Install some support library and the snpboost scripts
 USER root
 RUN apk add zlib-dev zstd-dev glibc gsl-dev
 
-# WORKDIR /opt
-# RUN wget ftp://ftp.gnu.org/gnu/gsl/gsl-2.8.tar.gz && \
-# 	tar -xvzf gsl-2.8.tar.gz && \
-# 	rm gsl-2.8.tar.gz && \
-# 	cd gsl-2.8 && \
-# 	./configure && \
-# 	make && \
-# 	make install && \
-# 	cd /opt && \
-# 	rm -rf gsl-2.8
+WORKDIR /opt
+COPY snpboost.tar.gz .
+RUN tar -xvzf snpboost.tar.gz
 
 USER rstudio-server
 
@@ -29,9 +23,5 @@ WORKDIR /opt
 COPY install.R /opt
 COPY requirements.txt /opt
 RUN Rscript /opt/install.R
-
-WORKDIR /opt
-COPY snpboost.tar.gz .
-RUN tar -xvzf snpboost.tar.gz
 
 ENTRYPOINT ["rserver"]
