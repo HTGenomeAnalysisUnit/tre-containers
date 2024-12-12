@@ -32,4 +32,7 @@ COPY install.R /opt
 COPY requirements.txt /opt
 RUN Rscript /opt/install.R
 
+# Ensure we are reading the packages from the container first
+ENV R_LIBS="/usr/lib/R/library"
+
 ENTRYPOINT ["rserver"]
