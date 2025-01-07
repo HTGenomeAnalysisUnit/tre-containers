@@ -143,6 +143,12 @@ To refer to a specific tag or commit use the following syntax:
 git+https://github.com/livnatje/DIALOGUE@v1.0.0
 ```
 
+To refer to a specific branch use the following syntax:
+
+```	
+git+https://github.com/livnatje/DIALOGUE--mybranch
+```
+
 ### For Python
 
 Please refer to `template_python` folder. 

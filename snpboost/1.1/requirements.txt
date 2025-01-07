@@ -10,4 +10,4 @@ Rfast
 RcppGSL
 RcppArmadillo
 optparse
-git+HTGenomeAnalysisUnit/snpboost.git--r_package
+git+HTGenomeAnalysisUnit/snpboost--r_package
