@@ -39,7 +39,7 @@ for (pkg in pkgs) {
 		pkg_name <- split_branch(pkg_name)
 		message("Installing package from ", pkg_name$repo_address)
 		if (is.na(pkg_name$branch)) {
-			remotes::install_github(pkg_name)
+			remotes::install_github(pkg_name$repo_address)
 		} else {
 			message("Using branch ", pkg_name$branch)
 			remotes::install_github(pkg_name$repo_address, ref=pkg_name$branch)
