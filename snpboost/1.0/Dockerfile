@@ -9,7 +9,7 @@ LABEL help="snpboost.R is in /opt/snpboost"
 
 # Install some support library and the snpboost scripts
 USER root
-RUN apk add zlib-dev zstd-dev glibc gsl-dev
+RUN apk add zlib-dev zstd-dev glibc gsl-dev zstd
 
 # Install plink2
 WORKDIR /opt
