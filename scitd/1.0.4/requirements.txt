@@ -16,6 +16,7 @@ XML
 snow
 futile.logger
 BH
+fastmatch
 bioc+AnnotationDbi
 bioc+ComplexHeatmap
 bioc+edgeR
