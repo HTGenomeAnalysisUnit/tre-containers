@@ -103,7 +103,7 @@ output_folder <- opt$output
 
 # Print argument values for debugging
 print("=== SNPBoost ===")
-print(paste("Script folder:", script_folder))
+#print(paste("Script folder:", script_folder))
 
 print("=== Arguments ===")
 print(paste("Genotype file:", genotype.pfile))
