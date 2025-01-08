@@ -1,17 +1,18 @@
-FROM ghtrecontainers/rstudio-chainguard:latest
+FROM htgenomeanalysisunit/rstudio-server:2024.09.0
 
-LABEL Description="snpboost container for tWAS"
+LABEL Description="scITD container for MCP"
 LABEL Author="Edoardo Giacopuzzi"
 LABEL Contact="edoardo.giacopuzzi@fht.org"
 # Match the version label to the container version tag
-LABEL version="1.0"
-LABEL help="snpboost.R is in /opt/snpboost" 
+LABEL version="1.0.4"
 
 # Install some support library and the snpboost scripts
-USER root
-RUN apk add zlib-dev zstd-dev glibc gsl-dev zstd
+#USER root
+RUN apt-get install -y --no-install-recommends zlib1g-dev \
+	&& apt -y autoremove --purge \
+	&& apt -y clean
 
-USER rstudio-server
+#USER rstudio-server
 
 # Install R packages
 # Copy the install.R and requirements.txt files to the container
