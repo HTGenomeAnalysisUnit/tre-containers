@@ -1,4 +1,4 @@
-FROM htgenomeanalysisunit/rstudio-server:2024.09.0
+FROM ghtrecontainers/rstudio-chainguard:latest
 
 LABEL Description="scITD container for multicellular programs"
 LABEL Author="Edoardo Giacopuzzi"
@@ -7,12 +7,10 @@ LABEL Contact="edoardo.giacopuzzi@fht.org"
 LABEL version="1.0.4"
 
 # Install some support library and the snpboost scripts
-#USER root
-RUN apt-get install -y --no-install-recommends zlib1g-dev \
-	&& apt -y autoremove --purge \
-	&& apt -y clean
+USER root
+RUN apk add zlib-dev zstd-dev glibc gsl-dev zstd
 
-#USER rstudio-server
+USER rstudio-server
 
 # Install R packages
 # Copy the install.R and requirements.txt files to the container
