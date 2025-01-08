@@ -1,6 +1,6 @@
 FROM htgenomeanalysisunit/rstudio-server:2024.09.0
 
-LABEL Description="scITD container for MCP"
+LABEL Description="scITD container for multicellular programs"
 LABEL Author="Edoardo Giacopuzzi"
 LABEL Contact="edoardo.giacopuzzi@fht.org"
 # Match the version label to the container version tag

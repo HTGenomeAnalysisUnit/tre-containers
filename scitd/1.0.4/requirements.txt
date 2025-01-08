@@ -17,10 +17,10 @@ snow
 futile.logger
 BH
 fastmatch
+git+ctlab/fgsea
 bioc+AnnotationDbi
 bioc+ComplexHeatmap
 bioc+edgeR
 bioc+sva
 bioc+Biobase
-bioc+fgsea
 scITD
