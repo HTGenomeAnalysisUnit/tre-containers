@@ -1,6 +1,14 @@
+optparse
+circlize
+GetoptLong
+clue
+GlobalOptions
+png
+matrixStats
+foreach
+doParallel
 bioc+ComplexHeatmap
 bioc+edgeR
 bioc+sva
 bioc+Biobase
-optparse
 scITD
