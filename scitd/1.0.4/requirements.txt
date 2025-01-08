@@ -13,6 +13,9 @@ DBI
 RSQLite
 xtable
 XML
+snow
+futile.logger
+BH
 bioc+AnnotationDbi
 bioc+ComplexHeatmap
 bioc+edgeR
