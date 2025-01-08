@@ -21,4 +21,5 @@ bioc+ComplexHeatmap
 bioc+edgeR
 bioc+sva
 bioc+Biobase
+bioc+fgsea
 scITD
