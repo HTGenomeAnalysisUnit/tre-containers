@@ -9,6 +9,11 @@ foreach
 doParallel
 statmod
 locfit
+DBI
+RSQLite
+xtable
+XML
+bioc+AnnotationDbi
 bioc+ComplexHeatmap
 bioc+edgeR
 bioc+sva
