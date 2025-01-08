@@ -7,6 +7,8 @@ png
 matrixStats
 foreach
 doParallel
+statmod
+locfit
 bioc+ComplexHeatmap
 bioc+edgeR
 bioc+sva
