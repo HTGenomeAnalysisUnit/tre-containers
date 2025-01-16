@@ -19,7 +19,7 @@ Example:
 EOM
 
 # Read command-line args
-while getopts 'i:m:h' OPTION
+while getopts 'i:m:d:h' OPTION
 do
   case "$OPTION" in
     i) sif_image="$OPTARG";;
@@ -106,7 +106,7 @@ rserver_conf="$Rstudio_data_dir/rserver.conf"
 echo "server-user=\"$USER\"" > $rserver_conf
 
 # Start Rstudio server using the singularity image
-singularity run --cleanenv \
+singularity run --cleanenv --no-home \
 	--env USER="$USER" \
 	--bind $PWD \
 	--bind ${config_dir}:${HOME}/.config/rstudio \
