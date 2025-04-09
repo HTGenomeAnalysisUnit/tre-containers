@@ -2,7 +2,7 @@ name: Build all changed recipes
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   get-updated-dockerfile:
@@ -15,16 +15,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4.1.1
         with:
-          fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
+          fetch-depth: 0 # OR "2" -> To retrieve the preceding commit.
 
       - name: Get changed dockerfiles
         id: changed-docker-files
-        uses: tj-actions/changed-files@v42.0.5
+        uses: tj-actions/changed-files@v46.0.1
         with:
           files: |
             **/Dockerfile
           json: true
-          escape_json: false  
+          escape_json: false
 
       - name: List all changed files
         run: |
@@ -36,9 +36,8 @@ jobs:
     needs: get-updated-dockerfile # Depends on previous job
     with:
       dockerfile-matrix: ${{ needs.get-updated-dockerfile.outputs.files-matrix }}
-      push-branch: 'refs/heads/main'
+      push-branch: "refs/heads/main"
       dockerhub_target: ${{ vars.DOCKERHUB_ORG }}
     secrets:
       username: ${{ secrets.DOCKERHUB_USERNAME }}
       token: ${{ secrets.DOCKERHUB_TOKEN }}
-        
