@@ -7,7 +7,7 @@ LABEL Contact="edoardo.giacopuzzi@fht.org"
 LABEL version="1.1.11"
 LABEL help="snpboost.R is in /opt/snpboost" 
 
-# Install some support library and the snpboost scripts
+# Install some support library
 USER root
 RUN apk add zlib-dev zstd-dev glibc gsl-dev zstd
 
@@ -19,6 +19,7 @@ RUN wget https://s3.amazonaws.com/plink2-assets/alpha6/plink2_linux_avx2_2024120
     && chmod a+x plink2 \
     && mv plink2 /usr/bin/plink2
 
+# Copy the snpboost main script
 WORKDIR /opt/snpboost
 COPY snpboost.R .
 
