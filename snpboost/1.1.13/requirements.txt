@@ -1,0 +1,13 @@
+git+chrchang/plink-ng/2.0/pgenlibr
+data.table
+tidyverse
+bigsnpr
+ggplot2
+cowplot
+readr
+dataPreparation
+Rfast
+RcppGSL
+RcppArmadillo
+optparse
+git+HTGenomeAnalysisUnit/snpboost--r_package
