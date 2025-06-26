@@ -1,0 +1,13 @@
+MatrixEQTL
+git+https://github.com/cvarrichio/Matrix.utils.git
+optparse
+pheatmap
+cowplot
+bioc+limma
+bioc+variancePartition
+bioc+EnhancedVolcano
+bioc+biomaRt
+bioc+edgeR
+bioc+dreamlet
+bioc+BiocManager
+bioc+SummarizedExperiment
