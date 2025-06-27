@@ -15,10 +15,7 @@ remaCor
 fANCOVA
 aod
 Rdpack
-stats
 matrixStats
-methods
-stats4
 bioc+limma
 bioc+variancePartition
 bioc+BiocParallel
