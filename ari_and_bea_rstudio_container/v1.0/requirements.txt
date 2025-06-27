@@ -20,6 +20,11 @@ stats
 matrixStats
 methods
 stats4
+dbplyr
+RSQLite
+DBI
+filelock
+BiocFileCache
 bioc+limma
 bioc+variancePartition
 bioc+BiocParallel
