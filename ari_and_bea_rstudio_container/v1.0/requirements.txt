@@ -1,5 +1,5 @@
 MatrixEQTL
-git+https://github.com/cvarrichio/Matrix.utils.git
+git+https://github.com/cvarrichio/Matrix.utils
 optparse
 pheatmap
 cowplot
