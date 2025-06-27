@@ -3,8 +3,8 @@ git+https://github.com/cvarrichio/Matrix.utils
 optparse
 pheatmap
 cowplot
-bioc+limma
 statmod
+bioc+limma
 bioc+variancePartition
 bioc+BiocParallel
 bioc+EnhancedVolcano
