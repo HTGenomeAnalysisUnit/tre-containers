@@ -26,3 +26,6 @@ bioc+IRanges
 bioc+GenomeInfoDb
 bioc+Biobase
 bioc+BiocManager
+futile.logger
+snow
+BH
