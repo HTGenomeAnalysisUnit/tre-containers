@@ -4,6 +4,9 @@ optparse
 pheatmap
 cowplot
 statmod
+futile.logger
+snow
+BH
 bioc+limma
 bioc+variancePartition
 bioc+BiocParallel
