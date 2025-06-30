@@ -65,4 +65,4 @@ bioc+S4Vectors
 bioc+IRanges
 bioc+GenomeInfoDb
 bioc+Biobase
-bioc+BiocManager
+BiocManager
