@@ -28,6 +28,7 @@ bioc+AnnotationDbi
 progress
 httr2
 xml2
+locfit
 bioc+BiocFileCache
 bioc+limma
 bioc+variancePartition
