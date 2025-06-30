@@ -46,6 +46,7 @@ bioc+variancePartition
 bioc+BiocParallel
 bioc+EnhancedVolcano
 bioc+biomaRt
+bioc+annotate
 bioc+GSEABase
 bioc+KEGGgraph
 bioc+SPIA
