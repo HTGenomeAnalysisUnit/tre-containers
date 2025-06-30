@@ -6,7 +6,6 @@ LABEL Contact="arianna.landini@fht.org"
 LABEL version="v1.0" 
 
 # Install R packages
-# Copy the install.R and requirements.txt files to the container
 WORKDIR /opt
 COPY install.R /opt
 COPY requirements.txt /opt
