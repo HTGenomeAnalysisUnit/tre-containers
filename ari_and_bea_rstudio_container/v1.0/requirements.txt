@@ -15,7 +15,6 @@ remaCor
 fANCOVA
 aod
 Rdpack
-graphics
 matrixStats
 dbplyr
 RSQLite
