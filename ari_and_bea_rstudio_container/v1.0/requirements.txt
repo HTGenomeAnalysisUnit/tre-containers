@@ -24,7 +24,15 @@ dbplyr
 RSQLite
 DBI
 filelock
-BiocFileCache
+crayon
+png
+bioc+Biostrings
+bioc+KEGGREST
+bioc+AnnotationDbi
+progress
+httr2
+xml2
+bioc+BiocFileCache
 bioc+limma
 bioc+variancePartition
 bioc+BiocParallel
