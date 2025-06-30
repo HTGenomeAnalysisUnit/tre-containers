@@ -16,4 +16,5 @@ COPY install.R /opt
 COPY requirements.txt /opt
 RUN Rscript /opt/install.R
 
+# ratudio server entrypoint
 ENTRYPOINT ["rserver"]
