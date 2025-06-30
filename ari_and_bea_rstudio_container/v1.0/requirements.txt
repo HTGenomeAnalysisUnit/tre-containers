@@ -16,10 +16,7 @@ fANCOVA
 aod
 Rdpack
 graphics
-stats
 matrixStats
-methods
-stats4
 dbplyr
 RSQLite
 DBI
