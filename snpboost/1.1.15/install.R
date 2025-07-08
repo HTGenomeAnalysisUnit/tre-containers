@@ -19,6 +19,9 @@ split_branch <- function(input_string) {
   return(list(repo_address = parts[1], branch = parts[2]))
 }
 
+# Install Require to nicely manage unload of packages
+remotes::install_version("Require", upgrade="never", repos=c("https://cloud.r-project.org/"))
+library(Require)
 
 # Read list of packages from requirements.txt
 pkgs <- readLines("requirements.txt")
@@ -61,5 +64,5 @@ for (pkg in pkgs) {
 	if ( ! library(pkg_name$pkg_name, character.only=TRUE, logical.return=TRUE) ) {
     	quit(status=1, save='no')
     }
-
+	detachAll(pkg_name$pkg_name)
 }
