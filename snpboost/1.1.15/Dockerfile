@@ -3,7 +3,6 @@ FROM ghtrecontainers/rstudio-chainguard:latest
 LABEL Description="snpboost container for tWAS"
 LABEL Author="Edoardo Giacopuzzi"
 LABEL Contact="edoardo.giacopuzzi@fht.org"
-
 LABEL version="1.1.15"
 LABEL help="snpboost.R is in /opt/snpboost" 
 

@@ -19,10 +19,6 @@ split_branch <- function(input_string) {
   return(list(repo_address = parts[1], branch = parts[2]))
 }
 
-# Install Require to nicely manage unload of packages
-remotes::install_version("Require", upgrade="never", repos=c("https://cloud.r-project.org/"))
-library(Require)
-
 # Read list of packages from requirements.txt
 pkgs <- readLines("requirements.txt")
 
@@ -66,10 +62,14 @@ for (pkg in pkgs) {
     }
 
 	message("Package ", pkg_name$pkg_name, " installed successfully")
+	message("Cleaning the environment")
 
-	tryCatch(
-		{ detachAll(pkg_name$pkg_name) }, 
-		error=function(e) {
-			message("Error detaching package ", pkg_name$pkg_name)
-		})
+	# Get a list of all attached packages
+	pkgs_to_unload <- paste('package:', names(sessionInfo()$otherPkgs), sep = "")
+
+	# remove remotes from this list
+	pkgs_to_unload <- pkgs_to_unload[!grepl("remotes", pkgs_to_unload)]
+
+	# Detach all non-base packages
+	lapply(pkgs_to_unload, detach, character.only = TRUE, unload = TRUE)
 }
