@@ -22,9 +22,9 @@ RUN wget https://s3.amazonaws.com/plink2-assets/alpha6/plink2_linux_avx2_2024120
 WORKDIR /opt/snpboost
 COPY snpboost.R .
 
+# Install R packages
 USER rstudio-server
 
-# Install R packages
 WORKDIR /opt
 COPY install.R /opt
 COPY requirements.txt /opt

@@ -57,19 +57,19 @@ for (pkg in pkgs) {
 		remotes::install_version(pkg_name$pkg_name, version=pkg_name$version, upgrade="never", repos=c("https://bioconductor.org/packages/3.19/bioc"))
 	}
 
-	if ( ! library(pkg_name$pkg_name, character.only=TRUE, logical.return=TRUE) ) {
-    	quit(status=1, save='no')
-    }
+	# if ( ! library(pkg_name$pkg_name, character.only=TRUE, logical.return=TRUE) ) {
+    # 	quit(status=1, save='no')
+    # }
 
 	message("Package ", pkg_name$pkg_name, " installed successfully")
-	message("Cleaning the environment")
+	# message("Cleaning the environment")
 
-	# Get a list of all attached packages
-	pkgs_to_unload <- paste('package:', names(sessionInfo()$otherPkgs), sep = "")
+	# # Get a list of all attached packages
+	# pkgs_to_unload <- paste('package:', names(sessionInfo()$otherPkgs), sep = "")
 
-	# remove remotes from this list
-	pkgs_to_unload <- pkgs_to_unload[!grepl("remotes", pkgs_to_unload)]
+	# # remove remotes from this list
+	# pkgs_to_unload <- pkgs_to_unload[!grepl("remotes", pkgs_to_unload)]
 
-	# Detach all non-base packages
-	lapply(pkgs_to_unload, detach, character.only = TRUE, unload = TRUE)
+	# # Detach all non-base packages
+	# lapply(pkgs_to_unload, detach, character.only = TRUE, unload = TRUE)
 }
