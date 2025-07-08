@@ -64,5 +64,12 @@ for (pkg in pkgs) {
 	if ( ! library(pkg_name$pkg_name, character.only=TRUE, logical.return=TRUE) ) {
     	quit(status=1, save='no')
     }
-	detachAll(pkg_name$pkg_name)
+
+	message("Package ", pkg_name$pkg_name, " installed successfully")
+
+	tryCatch(
+		{ detachAll(pkg_name$pkg_name) }, 
+		error=function(e) {
+			message("Error detaching package ", pkg_name$pkg_name)
+		})
 }
