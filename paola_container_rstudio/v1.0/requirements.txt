@@ -1,0 +1,16 @@
+git+https://github.com/bnprks/BPCells/r
+git+https://github.com/satijalab/seurat@v5.0.1
+git+https://github.com/stuart-lab/signac@v1.12.0
+ggpubr
+bioc+EnsDb.Hsapiens.v86
+bioc+biovizBase
+hdf5r
+anndata
+harmony
+bioc+motifmatchr
+bioc+chromVAR
+bioc+DESeq2
+lme4
+lmerTest
+parallel
+forcats
