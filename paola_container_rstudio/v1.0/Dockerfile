@@ -6,6 +6,11 @@ LABEL Contact="paola.benaglio@fht.org"
 # Match the version label to the container version tag
 LABEL version="v1.0" 
 
+USER root
+RUN apk add hdf5-dev
+
+USER rstudio-server
+
 # Install R packages
 # Copy the install.R and requirements.txt files to the container
 WORKDIR /opt
