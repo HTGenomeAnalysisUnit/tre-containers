@@ -6,7 +6,7 @@ LABEL Contact="paola.benaglio@fht.org"
 LABEL version="v1.0" 
 
 USER root
-RUN apk add hdf5 hdf5-dev hdf5-tools
+RUN apk add hdf5 hdf5-dev hdf5-tools libaec libaec-dev
 
 USER rstudio-server
 
