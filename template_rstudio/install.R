@@ -1,5 +1,12 @@
 library(remotes)
 
+bioc_repos <- c(
+  "https" = "https://cran.r-project.org",
+  "bioc" = "https://bioconductor.org/packages/3.19/bioc",
+  "annotation" = "https://bioconductor.org/packages/3.19/data/annotation",
+  "experiment" = "https://bioconductor.org/packages/3.19/data/experiment"
+)
+
 split_string <- function(input_string) {
   # Split the string based on the version symbols
   parts <- strsplit(input_string, "==|<=|>=|<|>")[[1]]
@@ -41,7 +48,7 @@ for (pkg in pkgs) {
 		remotes::install_version(pkg_name$pkg_name, version=pkg_name$version, upgrade="never", repos=c("https://cloud.r-project.org/"))
 	}
 	if (source == "bioc") {
-		remotes::install_version(pkg_name$pkg_name, version=pkg_name$version, upgrade="never", repos=c("https://bioconductor.org/packages/3.19/bioc"))
+		remotes::install_version(pkg_name$pkg_name, version=pkg_name$version, upgrade="never", repos=bioc_repos)
 	}
 
 	if ( ! library(pkg_name$pkg_name, character.only=TRUE, logical.return=TRUE) ) {
