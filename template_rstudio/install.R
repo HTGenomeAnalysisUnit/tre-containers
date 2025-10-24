@@ -15,10 +15,13 @@ split_string <- function(input_string) {
   symbol <- regmatches(input_string, regexpr("==|<=|>=|<|>", input_string))
   
   # Return the parts and the symbol
-  if (symbol == "==") {
+  version = "NA"
+  if (length(symbol) > 0) {
+	if (symbol == "==") {
 	  version = parts[2]
-  } else {
+    } else {
 	  version = paste(symbol, parts[2], sep = " ")
+    }
   }
   return(list(pkg_name = parts[1], version = version))
 }
