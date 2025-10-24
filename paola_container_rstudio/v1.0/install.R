@@ -41,7 +41,7 @@ for (pkg in pkgs) {
 	}
 
 	pkg_name <- split_string(pkg_name)
-	if (pkg_name$version == "NA") { pkg_name$version <- NULL }
+	if (trimws(pkg_name$version) == "NA") { pkg_name$version <- NULL }
 	message("Installing package ", pkg_name$pkg_name, " with version ", ifelse(is.null(pkg_name$version), "latest", pkg_name$version), " from ", source)
 
 	if (source == "CRAN") {
