@@ -1,11 +1,11 @@
 FROM ghtrecontainers/ari_and_bea_rstudio_container:v1.0
 
-LABEL Description="Multipurpose R env for ATAC and GH analysis"
+LABEL Description="Multi-purpose R env for ATAC and GH analysis"
 LABEL Author="Paola Benaglio"
 LABEL Contact="paola.benaglio@fht.org"
 LABEL version="v1.0" 
 
-# Install additional libraries needed to compile R packages
+# Install additional support libraries
 USER root
 RUN apk add hdf5 hdf5-dev hdf5-tools libaec libaec-dev
 
