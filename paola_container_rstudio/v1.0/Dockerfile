@@ -5,7 +5,7 @@ LABEL Author="Paola Benaglio"
 LABEL Contact="paola.benaglio@fht.org"
 LABEL version="v1.0" 
 
-# Install additional support libraries
+# Install support libraries
 USER root
 RUN apk add hdf5 hdf5-dev hdf5-tools libaec libaec-dev
 
