@@ -17,7 +17,7 @@ split_string <- function(input_string) {
   # Return the parts and the symbol
   if (symbol == "==") {
 	  version = parts[2]
-  else {
+  } else {
 	  version = paste(symbol, parts[2], sep = " ")
   }
   list(pkg_name = parts[1], version = paste(version)
