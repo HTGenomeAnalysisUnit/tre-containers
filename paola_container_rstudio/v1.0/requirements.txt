@@ -1,3 +1,4 @@
+scales>=1.4.0
 ggplot2>=3.5.2
 ggpubr
 hdf5r
