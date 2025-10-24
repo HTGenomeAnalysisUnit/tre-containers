@@ -20,7 +20,7 @@ split_string <- function(input_string) {
   } else {
 	  version = paste(symbol, parts[2], sep = " ")
   }
-  list(pkg_name = parts[1], version = paste(version)
+  return(list(pkg_name = parts[1], version = version))
 }
 
 
