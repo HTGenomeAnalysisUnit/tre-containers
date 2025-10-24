@@ -14,5 +14,5 @@ bioc+Rsamtools
 bioc+EnsDb.Hsapiens.v86
 bioc+biovizBase
 git+bnprks/BPCells/r
-Seurat=5.0.1
-Signac=1.12.0
+Seurat==5.0.1
+Signac==1.12.0
