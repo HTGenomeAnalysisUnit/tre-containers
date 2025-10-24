@@ -8,7 +8,6 @@ LABEL version="v1.0"
 # Install support libraries
 USER root
 RUN apk add hdf5 hdf5-dev hdf5-tools libaec libaec-dev
-
 USER rstudio-server
 
 # Install R packages
