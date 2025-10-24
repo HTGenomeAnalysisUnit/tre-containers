@@ -1,10 +1,4 @@
-git+bnprks/BPCells/r
-Seurat=5.0.1
-Signac=1.12.0
 ggpubr
-bioc+Rsamtools
-bioc+EnsDb.Hsapiens.v86
-bioc+biovizBase
 hdf5r
 anndata
 harmony
@@ -14,3 +8,9 @@ bioc+DESeq2
 lme4
 lmerTest
 forcats
+bioc+Rsamtools
+bioc+EnsDb.Hsapiens.v86
+bioc+biovizBase
+git+bnprks/BPCells/r
+Seurat=5.0.1
+Signac=1.12.0
