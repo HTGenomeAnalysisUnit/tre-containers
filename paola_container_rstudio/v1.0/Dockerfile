@@ -11,7 +11,7 @@ RUN apk add hdf5 hdf5-dev hdf5-tools libaec libaec-dev
 
 USER rstudio-server
 
-# Install R packages
+# Install R packages from requirements
 WORKDIR /opt
 COPY install.R /opt
 COPY requirements.txt /opt
