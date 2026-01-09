@@ -19,4 +19,4 @@ dependencies:
      - torch-scatter==2.1.2
      - mixmil==0.1.2
      - filelock==3.20.2
-prefix: /home/giuditta.clerici/conda_envs/mixmil_envf3
+
