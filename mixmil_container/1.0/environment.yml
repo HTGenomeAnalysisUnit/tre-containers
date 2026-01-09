@@ -314,7 +314,7 @@ dependencies:
       - nvidia-nvtx-cu12==12.4.127
       - sympy==1.13.1
       - torch==2.5.0
-      - torch-scatter==2.1.2+pt25cu124
+      - torch-scatter==2.1.2
       - torchaudio==2.5.0
       - torchvision==0.20.0
       - triton==3.1.0
