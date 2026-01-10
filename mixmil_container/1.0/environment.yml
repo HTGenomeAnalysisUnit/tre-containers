@@ -6,6 +6,9 @@ channels:
  - defaults
 dependencies:
  - python=3.11
+ - pip
+ - fsspec
+ - sympy=1.13.1
  - pytorch=2.5.0
  - torchvision
  - torchaudio
