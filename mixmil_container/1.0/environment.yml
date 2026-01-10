@@ -17,6 +17,5 @@ dependencies:
  - pip:
      - --find-links https://data.pyg.org/whl/torch-2.5.0+cu124.html
      - torch-scatter==2.1.2
-     - mixmil==0.1.2
      - filelock==3.20.2
 
