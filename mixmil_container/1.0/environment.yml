@@ -11,6 +11,9 @@ dependencies:
  - torchaudio
  - pytorch-cuda=12.4
  - pip
+ - jupyterlab
+ - ipykernel
+ - ipywidgets
  - scanpy
  - anndata
  - statannotations
