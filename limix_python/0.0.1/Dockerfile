@@ -1,4 +1,4 @@
-FROM ghcr.io/astral-sh/uv:python3.13-bookworm
+FROM ghcr.io/astral-sh/uv:python3.9-bookworm
 
 LABEL Description="Limix Python environment"
 LABEL Author="Jan Engelmann"
@@ -29,7 +29,7 @@ RUN curl -fsSL https://raw.githubusercontent.com/limix/chi2comb/master/install |
 # 5. UV Install
 # Note: We don't need --link-mode=copy if we aren't using mounts, but it's fine to keep.
 # We added 'git' to apt-get above so the git+ url works reliably.
-RUN uv pip install pandas numpy matplotlib scipy scikit-learn jupyterlab ipywidgets \
+RUN uv pip install pandas "numpy<=2.3" matplotlib scipy scikit-learn jupyterlab ipywidgets \
     fastcluster chiscore openpyxl ruff pyarrow scanpy anndata tqdm formulaic \
     statsmodels limix_core pgenlib matplotlib_venn seaborn "setuptools<81" \
     git+https://github.com/HTGenomeAnalysisUnit/project_styler_py.git --link-mode=copy
@@ -37,14 +37,6 @@ RUN uv pip install pandas numpy matplotlib scipy scikit-learn jupyterlab ipywidg
 # 6. Jupyter Kernel
 # Removed '--user'. Since PATH is set, this installs into /opt/venv/share/jupyter which is correct.
 RUN uv run -m ipykernel install --name vardec --display-name "vardec"
-
-# 7. Shell Tools (Optional but fine)
-RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
-RUN git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install --all
-
-# 8. Git Config
-RUN git config --global user.email "je16@sanger.ac.uk"
-RUN git config --global user.name "Jan Engelmann"
 
 # Cleanup
 RUN rm -f uv-setuptools-*.lock
