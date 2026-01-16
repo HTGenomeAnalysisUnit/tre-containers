@@ -17,13 +17,14 @@ WORKDIR /tmp
 
 # 3. System dependencies
 RUN chmod 1777 /tmp && apt-get update -y && apt-get install -y \
+    build-essential \
     cmake \
     curl \
     git \
     && rm -rf /var/lib/apt/lists/*
 
 # 4. Now this script will see the VIRTUAL_ENV and install into it correctly
-RUN bash <(curl -fsSL https://raw.githubusercontent.com/limix/chi2comb/master/install)
+RUN curl -fsSL https://raw.githubusercontent.com/limix/chi2comb/master/install | bash
 
 # 5. UV Install
 # Note: We don't need --link-mode=copy if we aren't using mounts, but it's fine to keep.
@@ -47,5 +48,6 @@ RUN git config --global user.name "Jan Engelmann"
 
 # Cleanup
 RUN rm -f uv-setuptools-*.lock
+RUN uv cache clean
 
 ENTRYPOINT ["uv", "run"]
