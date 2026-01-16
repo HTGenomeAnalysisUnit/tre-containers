@@ -28,7 +28,7 @@ RUN curl -fsSL https://raw.githubusercontent.com/limix/chi2comb/master/install |
 # 5. UV Install
 # Note: We don't need --link-mode=copy if we aren't using mounts, but it's fine to keep.
 # We added 'git' to apt-get above so the git+ url works reliably.
-RUN uv pip install pandas numpy matplotlib scipy scikit-learn jupyterlab ipywidgets \
+RUN uv pip install pandas "numpy<=2.3" matplotlib scipy scikit-learn jupyterlab ipywidgets \
     fastcluster chiscore openpyxl ruff pyarrow scanpy anndata tqdm formulaic \
     statsmodels limix_core pgenlib matplotlib_venn seaborn "setuptools<81" \
     git+https://github.com/HTGenomeAnalysisUnit/project_styler_py.git --link-mode=copy
