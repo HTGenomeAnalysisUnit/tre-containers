@@ -23,7 +23,7 @@ RUN chmod 1777 /tmp && apt-get update -y && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # 4. Now this script will see the VIRTUAL_ENV and install into it correctly
-RUN bash <(curl -fsSL https://raw.githubusercontent.com/limix/chi2comb/master/install)
+RUN curl -fsSL https://raw.githubusercontent.com/limix/chi2comb/master/install | bash
 
 # 5. UV Install
 # Note: We don't need --link-mode=copy if we aren't using mounts, but it's fine to keep.
@@ -36,14 +36,6 @@ RUN uv pip install pandas numpy matplotlib scipy scikit-learn jupyterlab ipywidg
 # 6. Jupyter Kernel
 # Removed '--user'. Since PATH is set, this installs into /opt/venv/share/jupyter which is correct.
 RUN uv run -m ipykernel install --name vardec --display-name "vardec"
-
-# 7. Shell Tools (Optional but fine)
-RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
-RUN git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install --all
-
-# 8. Git Config
-RUN git config --global user.email "je16@sanger.ac.uk"
-RUN git config --global user.name "Jan Engelmann"
 
 # Cleanup
 RUN rm -f uv-setuptools-*.lock
