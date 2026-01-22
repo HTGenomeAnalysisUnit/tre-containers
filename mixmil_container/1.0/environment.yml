@@ -17,6 +17,9 @@ dependencies:
  - scanpy
  - anndata
  - statannotations
+ - jupyterlab
+ - ipykernel
+ - ipywidgets
  - pip:
      - --find-links https://data.pyg.org/whl/torch-2.5.0+cu124.html
      - torch-scatter==2.1.2
