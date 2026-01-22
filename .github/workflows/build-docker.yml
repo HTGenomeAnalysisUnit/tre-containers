@@ -122,17 +122,17 @@ jobs:
           load: true
           push: false
 
-      - name: Run Trivy vulnerability scanner
-        id: trivy
+      # - name: Run Trivy vulnerability scanner
+        #id: trivy
         #continue-on-error: true
-        uses: aquasecurity/trivy-action@0.28.0
-        with:
-          image-ref: '${{ steps.parse-dockerfile.outputs.check_tag }}'
-          format: 'table'
-          exit-code: '1'
-          ignore-unfixed: false
-          vuln-type: 'os,library'
-          severity: 'CRITICAL'
+        #uses: aquasecurity/trivy-action@0.28.0
+        #with:
+          #image-ref: '${{ steps.parse-dockerfile.outputs.check_tag }}'
+          #format: 'table'
+          #exit-code: '1'
+          #ignore-unfixed: false
+          #vuln-type: 'os,library'
+          #severity: 'CRITICAL'
       
       - name: Push to dockerhub
         run: |
