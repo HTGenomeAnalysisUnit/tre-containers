@@ -1,4 +1,4 @@
-name: mixmil_envf3
+name: mixmil_envf3_v1_1
 channels:
  - pytorch
  - nvidia
@@ -17,9 +17,15 @@ dependencies:
  - scanpy
  - anndata
  - statannotations
+ - jupyter-resource-usage
+ - jedi-language-server>=0.41.4
+ - jupyterlab-git
+ - jupyterlab-lsp
  - jupyterlab
  - ipykernel
  - notebook
+ - nodejs                       # Added for extension support
+ - python-lsp-server            # Added to power jupyterlab-lsp
  - ipywidgets
  - cuda-toolkit
  - pip:
