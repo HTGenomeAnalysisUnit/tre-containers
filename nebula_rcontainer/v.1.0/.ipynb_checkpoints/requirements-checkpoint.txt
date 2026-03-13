@@ -1,0 +1,13 @@
+RcppParallel
+readxl
+BiocManager
+SingleCellExperiment
+spam
+remotes
+ggrepel
+Seurat
+nebula
+readr
+Matrix
+BPCells
+tidyverse
