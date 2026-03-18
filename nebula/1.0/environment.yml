@@ -39,4 +39,5 @@ dependencies:
   - r-readr
   - r-optparse
   - r-dplyr
+  - r-irkernel
   - gsl

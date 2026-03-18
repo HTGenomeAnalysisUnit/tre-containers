@@ -41,6 +41,8 @@ RUN micromamba run -n base Rscript -e "\
     cat('BPCells version:', as.character(packageVersion('BPCells')), '\n'); \
 "
 
+RUN micromamba run -n base Rscript -e "IRkernel::installspec(name = 'ir33', displayname = 'R 3.3', user = FALSE)"
+
 COPY nebula_run_sep.r /usr/local/bin/nebula_run_sep.r
 RUN chmod +x /usr/local/bin/nebula_run_sep.r
 
