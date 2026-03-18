@@ -1,0 +1,42 @@
+name: base
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - git=2.47.0
+  - ipykernel>=6.29.5
+  - jedi-language-server>=0.41.4
+  - jupyter-resource-usage>=1.1.0
+  - jupyterlab-git>=0.50.1
+  - jupyterlab-lsp>=5.1.0
+  - jupyterlab=4.2.5
+  - notebook=7.2.2
+  - r-base=4.4
+  - r-bpcells=0.3.0
+  - r-biocmanager
+  - bioconductor-genomicranges
+  - bioconductor-iranges
+  - bioconductor-singlecellexperiment
+  - r-igraph
+  - r-matrixstats
+  - r-rspectra
+  - macs3
+  - r-rcpp
+  - r-rcppparallel
+  - r-matrix
+  - r-nloptr
+  - r-rfast
+  - r-trust
+  - r-parallelly
+  - r-future
+  - r-dofuture
+  - r-foreach
+  - r-dorng
+  - r-seurat
+  - r-spam
+  - r-remotes
+  - r-cluster
+  - r-readr
+  - r-optparse
+  - r-dplyr
+  - gsl
