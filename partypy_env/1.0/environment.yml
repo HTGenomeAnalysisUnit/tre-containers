@@ -1,0 +1,45 @@
+name: partypy_env
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - anndata=0.12
+  - fastparquet=2026.5
+  - h5py=3.16
+  - harfbuzz=14.2.0
+  - hdf5=1.14.6
+  - hpack=4.1.0
+  - idna=3.15
+  - ipykernel=7.2
+  - ipython=9.13
+  - ipython_pygments_lexers=1.1
+  - ipywidgets=8.1
+  - isoduration=20.11
+  - jedi=0.19
+  - jinja2=3.1
+  - joblib=1.5
+  - json5=0.14
+  - jsonpointer=3.1
+  - jsonschema=4.26
+  - jsonschema-specifications=2025.9
+  - jsonschema-with-format-nongpl=4.26
+  - jupyter-resource-usage
+  - jedi-language-server>=0.41
+  - jupyterlab-git
+  - jupyterlab-lsp
+  - jupyterlab
+  - ipykernel
+  - notebook
+  - matplotlib
+  - numpy=2.4
+  - pandas=2.3
+  - pip=26.1
+  - python=3.11
+  - scanpy=1.7
+  - scikit-learn=1.8
+  - scipy=1.17
+  - seaborn
+  - statsmodels
+  - pip:
+      - partipy==0.2.0
