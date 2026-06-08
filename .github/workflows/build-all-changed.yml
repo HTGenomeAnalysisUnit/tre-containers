@@ -13,13 +13,13 @@ jobs:
     outputs:
       files-matrix: ${{ steps.changed-docker-files.outputs.all_changed_files }}
     steps:
-      - uses: actions/checkout@v4.1.1
+      - uses: actions/checkout@v6.0.3
         with:
           fetch-depth: 0 # OR "2" -> To retrieve the preceding commit.
 
       - name: Get changed dockerfiles
         id: changed-docker-files
-        uses: tj-actions/changed-files@v46.0.1
+        uses: tj-actions/changed-files@v47.0.6
         with:
           files: |
             **/Dockerfile
