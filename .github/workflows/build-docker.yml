@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4.1.1
+        uses: actions/checkout@v6.0.3
       - name: List all changed files
         run: echo '${{ inputs.dockerfile-matrix }}'
   
@@ -110,7 +110,7 @@ jobs:
       
       - name: Build and push
         id: docker-build
-        uses: docker/build-push-action@v6.9.0
+        uses: docker/build-push-action@v7.2.0
         with:
           # relative path to the place where source code with Dockerfile is located
           context: ${{ steps.parse-dockerfile.outputs.context }}
