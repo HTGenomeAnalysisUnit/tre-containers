@@ -118,9 +118,9 @@ jobs:
           file: ${{ steps.parse-dockerfile.outputs.dockerfile }}
           # Note: tags has to be all lower-case
           tags: ${{ steps.parse-dockerfile.outputs.tag }}
-          # make image available to other jobs
-          load: true
-          push: false
+          # switch to true to make the image available to other jobs
+          load: false
+          push: true
 
       # - name: Run Trivy vulnerability scanner
         #id: trivy
@@ -134,12 +134,12 @@ jobs:
           #vuln-type: 'os,library'
           #severity: 'CRITICAL'
       
-      - name: Push to dockerhub
-        run: |
-          docker push $(echo "${{ steps.parse-dockerfile.outputs.tag }}" | cut -d',' -f1)
-          docker push $(echo "${{ steps.parse-dockerfile.outputs.tag }}" | cut -d',' -f2)
-        env:
-          DOCKER_CLI_EXPERIMENTAL: enabled
+      #- name: Push to dockerhub
+      #  run: |
+      #    docker push $(echo "${{ steps.parse-dockerfile.outputs.tag }}" | cut -d',' -f1)
+      #    docker push $(echo "${{ steps.parse-dockerfile.outputs.tag }}" | cut -d',' -f2)
+      #  env:
+      #    DOCKER_CLI_EXPERIMENTAL: enabled
         
       - name: Image digest
         run: echo ${{ steps.docker-build.outputs.digest }}
