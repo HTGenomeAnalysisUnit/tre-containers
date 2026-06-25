@@ -6,4 +6,5 @@ lubridate
 pls
 readxl
 tidytext
+dplyr>=1.1.4
 tidyverse
