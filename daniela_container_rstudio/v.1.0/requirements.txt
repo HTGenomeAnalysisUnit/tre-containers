@@ -2,6 +2,7 @@ cpp11>=0.5.5
 rlang>=1.1.7
 vctrs>=0.7.1
 lifecycle>=1.0.5
+dplyr>=1.1.4
 fda
 ggsci
 gridExtra
@@ -9,5 +10,4 @@ lubridate
 pls
 readxl
 tidytext
-dplyr>=1.1.4
 tidyverse
