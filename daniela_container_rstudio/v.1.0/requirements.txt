@@ -1,4 +1,5 @@
 cpp11>=0.5.5
+rlang>=1.1.7
 fda
 ggsci
 gridExtra
