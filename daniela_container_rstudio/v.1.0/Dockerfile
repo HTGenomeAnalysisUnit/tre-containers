@@ -8,8 +8,8 @@ LABEL Version="1.1.0"
 # Install additional libs needed by R packages
 USER root
 RUN apk add pkgconf fontconfig-dev harfbuzz-dev fribidi-dev freetype-dev libpng-dev tiff-dev libjpeg-turbo-dev libwebp libwebp-dev && \
-    ln -sf "$(find /usr/lib -maxdepth 1 -name 'libwebp.so.*' | head -n1)" /usr/lib/libwebp.so && \
-    ln -sf "$(find /usr/lib -maxdepth 1 -name 'libwebpmux.so.*' | head -n1)" /usr/lib/libwebpmux.so
+    ln -sf /usr/lib/libwebp.so.7 /usr/lib/libwebp.so && \
+    ln -sf /usr/lib/libwebpmux.so.3 /usr/lib/libwebpmux.so
 
 USER rstudio-server
 
