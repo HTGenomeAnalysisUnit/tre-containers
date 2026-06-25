@@ -7,7 +7,7 @@ LABEL Version="1.1.0"
 
 # Install additional libs needed by R packages
 USER root
-RUN apk add harfbuzz-dev fribidi-dev
+RUN apk add harfbuzz-dev fribidi-dev freetype-dev libpng-dev tiff-dev libjpeg-turbo-dev
 
 USER rstudio-server
 
