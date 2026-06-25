@@ -11,7 +11,7 @@ RUN apk add harfbuzz-dev fribidi-dev freetype-dev libpng-dev tiff-dev libjpeg-tu
 
 USER rstudio-server
 
-# Install R packages
+# Install R packages using support script
 WORKDIR /opt
 COPY install.R /opt
 COPY requirements.txt /opt
