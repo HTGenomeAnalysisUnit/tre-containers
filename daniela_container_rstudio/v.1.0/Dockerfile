@@ -5,7 +5,7 @@ LABEL Author="Daniela Zanotti"
 LABEL Contact="daniela.zanotti@fht.org"
 LABEL Version="1.1"
 
-# Install R packages
+# Install R packages from requirements.txt
 WORKDIR /opt
 COPY install.R /opt
 COPY requirements.txt /opt
