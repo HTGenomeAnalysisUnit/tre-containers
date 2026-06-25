@@ -5,6 +5,12 @@ LABEL Author="Daniela Zanotti"
 LABEL Contact="daniela.zanotti@fht.org"
 LABEL Version="1.1.0"
 
+# Install additional libs needed by R packages
+USER root
+RUN apk add harfbuzz-dev fribidi-dev
+
+USER rstudio-server
+
 # Install R packages from requirements.txt
 WORKDIR /opt
 COPY install.R /opt
