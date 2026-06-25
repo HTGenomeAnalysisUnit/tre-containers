@@ -3,7 +3,7 @@ FROM ghtrecontainers/rstudio-chainguard:latest
 LABEL Description="Rstudio with tidyverse, gridExtra and ggsci"
 LABEL Author="Daniela Zanotti"
 LABEL Contact="daniela.zanotti@fht.org"
-LABEL Version="1.1"
+LABEL Version="1.1.0"
 
 # Install R packages from requirements.txt
 WORKDIR /opt
