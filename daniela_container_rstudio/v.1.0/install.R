@@ -17,7 +17,7 @@ split_string <- function(input_string) {
     }
   }
 	
-  return(list(pkg_name = parts[1], version = version)
+  return(list(pkg_name = parts[1], version = version))
 }
 
 
