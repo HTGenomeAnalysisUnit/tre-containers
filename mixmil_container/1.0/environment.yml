@@ -1,0 +1,28 @@
+name: mixmil_envf3
+channels:
+ - pytorch
+ - nvidia
+ - conda-forge
+ - defaults
+dependencies:
+ - python=3.11
+ - pip
+ - fsspec
+ - sympy=1.13.1
+ - pytorch=2.5.0
+ - torchvision
+ - torchaudio
+ - pytorch-cuda=12.4
+ - pip
+ - scanpy
+ - anndata
+ - statannotations
+ - jupyterlab
+ - ipykernel
+ - notebook
+ - ipywidgets
+ - cuda-toolkit
+ - pip:
+     - --find-links https://data.pyg.org/whl/torch-2.5.0+cu124.html
+     - torch-scatter==2.1.2
+     - filelock==3.20.2
