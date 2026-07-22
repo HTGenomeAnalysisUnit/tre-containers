@@ -1,4 +1,5 @@
 rlang>=1.1.7
+lifecycle>=1.0.5
 gridExtra
 survival
 survminer
