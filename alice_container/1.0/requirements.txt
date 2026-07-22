@@ -4,7 +4,7 @@ msm
 TMB
 bit64
 lubridate
-splines
+rlang
 purrr
 mgcv
 future
@@ -13,7 +13,6 @@ ddalpha
 reshape2
 igraph
 gridExtra
-grid
 survival
 survminer
 cluster
