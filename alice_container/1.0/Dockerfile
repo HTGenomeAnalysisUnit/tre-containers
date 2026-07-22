@@ -1,10 +1,10 @@
 FROM ghtrecontainers/rstudio-chainguard:latest
 
-LABEL Description="Short env description"
+LABEL Description="Working env for Alice"
 LABEL Author="Alice Flamigni"
 LABEL Contact="alice.flamigni@fht.org"
 # Match the version label to the container version tag
-LABEL version="0.1" 
+LABEL version="1.0" 
 
 # Install R packages
 # Copy the install.R and requirements.txt files to the container
