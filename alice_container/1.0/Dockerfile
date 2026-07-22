@@ -1,6 +1,6 @@
 FROM ghtrecontainers/rstudio-chainguard:latest
 
-LABEL Description="Working env for Alice"
+LABEL Description="Working env for Alice's analysis"
 LABEL Author="Alice Flamigni"
 LABEL Contact="alice.flamigni@fht.org"
 # Match the version label to the container version tag
