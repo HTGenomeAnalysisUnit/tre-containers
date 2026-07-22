@@ -2,6 +2,7 @@ rlang>=1.1.7
 lifecycle>=1.0.5
 vctrs>=0.7.1
 V8
+tibble
 gridExtra
 purrr
 survival
@@ -23,5 +24,4 @@ future.apply
 fmsb
 gtsummary
 rstan
-tibble
 ggalluvial
