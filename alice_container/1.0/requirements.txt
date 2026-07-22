@@ -3,7 +3,7 @@ hmmTMB
 msm
 TMB
 bit64
-lubridate 
+lubridate
 splines
 purrr
 mgcv
