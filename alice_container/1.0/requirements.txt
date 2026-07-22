@@ -1,4 +1,5 @@
 rlang>=1.1.7
+gridExtra
 tmbstan
 hmmTMB
 msm
@@ -12,7 +13,6 @@ furrr
 ddalpha
 reshape2
 igraph
-gridExtra
 survival
 survminer
 cluster
