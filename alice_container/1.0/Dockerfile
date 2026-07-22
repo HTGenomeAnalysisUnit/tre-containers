@@ -11,6 +11,9 @@ LABEL version="1.0"
 WORKDIR /opt
 COPY install.R /opt
 COPY requirements.txt /opt
+# DOWNLOAD_STATIC_LIBV8=1 tells the V8 R package to download a static libv8 build
+# since the chainguard base image does not include libv8-dev system headers
+ENV DOWNLOAD_STATIC_LIBV8=1
 RUN Rscript /opt/install.R
 
 ENTRYPOINT ["rserver"]
