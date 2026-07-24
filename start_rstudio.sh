@@ -52,7 +52,7 @@ else
 		if [ ! -d $mount ]
 		then
 			echo "Error: -m required to mount the directory $mount"
-			does "This folder does not exist!"
+			echo "This folder does not exist!"
 			exit 1
 		fi
 		mount_option="$mount_option -B $mount"
