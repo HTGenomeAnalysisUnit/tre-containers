@@ -1,6 +1,6 @@
 FROM ghtrecontainers/python-chainguard:latest
 
-LABEL Description="partipy 2.0 container"
+LABEL Description="partipy container"
 LABEL Author="Giuditta Clerici"
 LABEL Contact="giuditta.clerici@fht.org"
 LABEL version="2.0"
