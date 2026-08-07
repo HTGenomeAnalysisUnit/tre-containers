@@ -1,1 +1,5 @@
 .DS_Store
+*/.ipynb_checkpoints
+/*/.ipynb_checkpoints*
+partypy_env/1.0/.ipynb_checkpoints/
+partypy_env/2.0/.ipynb_checkpoints/*
