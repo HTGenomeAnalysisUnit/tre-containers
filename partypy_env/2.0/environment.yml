@@ -33,4 +33,4 @@ dependencies:
   - jedi-language-server>=0.41
   - pip
   - pip:
-      - partipy
+      - partipy
