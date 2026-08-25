@@ -14,10 +14,13 @@ RUN apk add \
 	font-liberation \
 	libjpeg-turbo-dev \
 	libpng-dev \
+	libwebp \
 	libwebp-dev \
 	pango-dev \
 	tiff-dev \
-	libxt-dev
+	libxt-dev && \
+	ln -sf "$(ls -v /usr/lib/libwebp.so.[0-9]* | tail -n 1)" /usr/lib/libwebp.so && \
+	ln -sf "$(ls -v /usr/lib/libwebpmux.so.[0-9]* | tail -n 1)" /usr/lib/libwebpmux.so
 
 USER rstudio-server
 
