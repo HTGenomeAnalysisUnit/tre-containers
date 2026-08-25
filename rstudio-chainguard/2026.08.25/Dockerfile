@@ -19,6 +19,7 @@ RUN apk add \
 	pango-dev \
 	tiff-dev \
 	libxt-dev && \
+	rm -f /usr/lib/libtiff.a && \
 	ln -sf "$(ls -v /usr/lib/libwebp.so.[0-9]* | tail -n 1)" /usr/lib/libwebp.so && \
 	ln -sf "$(ls -v /usr/lib/libwebpmux.so.[0-9]* | tail -n 1)" /usr/lib/libwebpmux.so
 
