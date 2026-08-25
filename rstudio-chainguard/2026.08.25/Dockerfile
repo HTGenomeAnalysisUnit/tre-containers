@@ -9,7 +9,7 @@ USER root
 
 # Install graphical system dependencies
 RUN apk add \
-	font-dejavu \
+	font-liberation \
 	libpng-dev \
 	pango-dev \
 	libxt-dev
