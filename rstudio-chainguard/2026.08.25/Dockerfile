@@ -9,6 +9,7 @@ USER root
 
 # Install graphical system dependencies
 RUN apk add \
+	harfbuzz-dev \
 	font-liberation \
 	libpng-dev \
 	pango-dev \
