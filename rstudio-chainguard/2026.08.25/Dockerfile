@@ -10,9 +10,13 @@ USER root
 # Install graphical system dependencies
 RUN apk add \
 	harfbuzz-dev \
+	freetype-dev \
 	font-liberation \
+	libjpeg-turbo-dev \
 	libpng-dev \
+	libwebp-dev \
 	pango-dev \
+	tiff-dev \
 	libxt-dev
 
 USER rstudio-server
