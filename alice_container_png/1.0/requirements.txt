@@ -7,7 +7,7 @@ gridExtra
 purrr
 survival
 survminer
-tmbstan
+tmbstan==1.0.9
 hmmTMB
 msm
 TMB
