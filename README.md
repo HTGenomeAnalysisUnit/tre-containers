@@ -5,6 +5,7 @@ This repository hosts container recipes for analyses in the G&H TRE system.
 The repository automatically builds any Dockerfile pushed to the main branch and publish them in DockerHub.
 
 - [TRE containers repository](#tre-containers-repository)
+  - [Important notes](#important-notes)
   - [The base containers](#the-base-containers)
     - [R studio](#r-studio)
     - [Python](#python)
@@ -15,6 +16,12 @@ The repository automatically builds any Dockerfile pushed to the main branch and
   - [Use R and Python from your container](#use-r-and-python-from-your-container)
     - [Python](#python-1)
     - [R](#r)
+
+## Important notes
+
+In containers built before commit `4d042c5` there is an issue in the R container that prevents plot visualization directly in the R studio interface and saving graphic objects to PNG format. This means that direct calls to `ggplot` or the use of `ggsave` with PNG output fail. You can still save plots to PDF format.
+
+The base container `ghtrecontainers/rstudio-chainguard:latest` after commit `4d042c5` includes the fix. If you are using an older container, consider to re-build it to get the fix included. Using this fix you can now save to PNG file format, but the direct visualization of plots still doesn't work in the G&H TRE. You can still visualize plots by saving them to a file and opening the file.
 
 ## The base containers
 
